@@ -6,9 +6,10 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useState } from "react";
-
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const { emailPasswordRegister, setUser } = useAuthProvider();
@@ -21,7 +22,7 @@ const Register = () => {
 
   const onSubmitRegister = (data) => {
     const { email, password, photoURL, name } = data;
-   
+
     emailPasswordRegister(email, password)
       .then((res) => {
         updateProfile(res.user, {
@@ -29,10 +30,21 @@ const Register = () => {
           photoURL: photoURL,
         })
           .then(() => {
-            reset();
-            toast.success("Register successful.");
-            setUser(res.user);
-            navigate("/");
+            // create user entry in the database
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+            axiosPublic.post("/user", userInfo)
+            .then(res=> {
+              if(res.data?.insertedId){
+                reset();
+                toast.success("Register successful.");
+                setUser(res.user);
+                navigate("/");
+              }
+            })
+            
           })
           .catch(() => {
             toast.error("Error occured.");

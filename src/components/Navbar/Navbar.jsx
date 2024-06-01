@@ -1,23 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { useState } from "react";
 import { useEffect } from "react";
 import useAuthProvider from "../../hooks/useAuthProvider";
-// import logo from "../assets/Logo.png";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("light");
   const { user, logOut } = useAuthProvider();
   useEffect(() => {
-    const localTheme = localStorage.getItem("theme");
-    if (localTheme) {
-      setTheme(localTheme);
-    } else {
-      localStorage.setItem("theme", theme);
-    }
-    document.querySelector("html").setAttribute("class", localTheme);
-  }, [theme]);
+    
+    document.querySelector("html").setAttribute("class", "dark");
+  }, []);
 
   const links = (
     <>
@@ -116,11 +107,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             {user ? (
               <>
-                <div>
-                  <p className="text-xs font-poppins hidden sm:block font-bold">
-                    {user?.displayName}
-                  </p>
-                </div>
+                
                 <img
                   // style={{ display: window.innerWidth <= 541 ? 'block' : 'none' }}
                   referrerPolicy="no-referrer"
@@ -148,25 +135,7 @@ const Navbar = () => {
                 </button>
               </Link>
             )}
-            <div className="text-black">
-              <button className="text-2xl bg-gray-300 hover:bg-gray-400 p-2 rounded-full">
-                {theme == "dark" ? (
-                  <FiSun
-                    onClick={() => {
-                      localStorage.setItem("theme", "light");
-                      return setTheme("light");
-                    }}
-                  />
-                ) : (
-                  <FiMoon
-                    onClick={() => {
-                      localStorage.setItem("theme", "dark");
-                      return setTheme("dark");
-                    }}
-                  />
-                )}
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>

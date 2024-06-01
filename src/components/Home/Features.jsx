@@ -8,10 +8,10 @@ import expert from '../../assets/expert.png'
 
 const Features = () => {
   return (
-    <section className="m-4 md:m-8 dark:bg-gray-100 dark:text-gray-800">
+    <section className="m-4 md:m-8  text-gray-100">
       <div className="container mx-auto p-4 my-6 space-y-2 text-center">
         <h2 className="text-3xl sm:text-5xl font-bold">Get A Perfect Body</h2>
-        <p className="dark:text-gray-600  max-w-[900px] mx-auto">
+        <p className="text-gray-200  max-w-[900px] mx-auto">
           Discover ThriveFit's exceptional services: personalized training
           plans, advanced equipment, vibrant group classes, and expert nutrition
           guidance. Achieve your perfect body with us!

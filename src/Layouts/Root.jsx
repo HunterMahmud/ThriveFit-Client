@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="">
           <Navbar/>
             <Outlet/>
             footer
