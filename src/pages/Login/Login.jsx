@@ -11,9 +11,11 @@ import {
   import { FaEye } from "react-icons/fa";
   import { FaEyeSlash } from "react-icons/fa";
 import useAuthProvider from "../../hooks/useAuthProvider";
+import useAxiosPublic from './../../hooks/useAxiosPublic';
   
   const Login = () => {
     // const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
     const [showPass, setShowPass] = useState(false);
     const {
       register,
@@ -54,12 +56,17 @@ import useAuthProvider from "../../hooks/useAuthProvider";
         .then((res) => {
           // console.log(res.user?.email);
           toast.success("Login success.");
-    //       const user = { email: res.user?.email };
+          const userInfo = { email: res.user?.email, name:res.user?.displayName };
+          axiosPublic.post('/user', userInfo)
+          .then(res=> {
+            // console.log(res.data);
+            navigate(location?.state ? location.state : "/");
+          })
   
     //       axiosSecure.post("/jwt", user).then((res) => {
     //         // console.log(res.data);
     //         if (res.data?.success) {
-    //           navigate(location?.state ? location.state : "/");
+    //           
     //         }
     //       });
         })

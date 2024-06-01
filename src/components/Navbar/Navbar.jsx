@@ -38,7 +38,7 @@ const Navbar = () => {
           <li>
             <NavLink
               className="text-base sm:text-lg lg:text-sm"
-              to="/add-books"
+              to="/dashboard"
             >
               Dashboard
             </NavLink>
