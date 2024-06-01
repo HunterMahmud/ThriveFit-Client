@@ -7,7 +7,12 @@ export default {
   darkMode: "class",
   theme: {
     extend: {},
+    fontFamily:{
+      'Bebas': ['"Bebas Neue", sans-serif'],
+    },
   },
+  
+
   plugins: [
     require('daisyui'),
   ],

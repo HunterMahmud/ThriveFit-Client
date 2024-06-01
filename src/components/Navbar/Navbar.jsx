@@ -101,9 +101,9 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-white text-xl italic"
           >
-            <img src="" className="h-8" alt="BookShelf Logo" />
+            Thrive <span className="not-italic text-blue-400">Fit</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

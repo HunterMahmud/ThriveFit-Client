@@ -29,11 +29,11 @@ import useAuthProvider from "../../hooks/useAuthProvider";
     const onSubmitLogin = (data) => {
       // console.log(data);
       const { email, password } = data;
-    //   emailPasswordLogIn(email, password)
-    //     .then((res) => {
-    //       // console.log(res.user);
+      emailPasswordLogIn(email, password)
+        .then((res) => {
+          // console.log(res.user);
   
-    //       toast.success("Login success.");
+          toast.success("Login success.");
     //       //generate jwt token
     //       const user = { email };
   
@@ -43,17 +43,17 @@ import useAuthProvider from "../../hooks/useAuthProvider";
     //           navigate(location?.state ? location.state : "/");
     //         }
     //       });
-    //     })
-    //     .catch((err) => {
-    //       // console.log(err);
-    //       toast.error("Login failed. Invalid credentials");
-    //     });
+        })
+        .catch((err) => {
+          // console.log(err);
+          toast.error("Login failed. Invalid credentials");
+        });
     };
     const handleLoginWithGoogle = () => {
-    //   googleLogin()
-    //     .then((res) => {
-    //       // console.log(res.user?.email);
-    //       toast.success("Login success.");
+      googleLogin()
+        .then((res) => {
+          // console.log(res.user?.email);
+          toast.success("Login success.");
     //       const user = { email: res.user?.email };
   
     //       axiosSecure.post("/jwt", user).then((res) => {
@@ -62,11 +62,11 @@ import useAuthProvider from "../../hooks/useAuthProvider";
     //           navigate(location?.state ? location.state : "/");
     //         }
     //       });
-    //     })
-    //     .catch((err) => {
-    //       // console.log(err);
-    //       toast.error("Login failed. Invalid credentials");
-    //     });
+        })
+        .catch((err) => {
+          // console.log(err);
+          toast.error("Login failed. Invalid credentials");
+        });
     };
   
     return (
