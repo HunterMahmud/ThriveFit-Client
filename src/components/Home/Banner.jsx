@@ -22,7 +22,7 @@ const Banner = () => {
         className="absolute top-[40%] left-12 md:left-20 w-[70%]  z-10"
       >
         <div className=" h-[40%] max-w-[900px] text-white p-5">
-          <h1 className="text-2xl dark:text-gray-200 md:text-5xl uppercase font-Bebas font-extrabold">
+          <h1 className="text-3xl sm:text-5xl dark:text-gray-200 uppercase font-Bebas font-extrabold">
             {" "}
             Keep Your Body <br /> Fit {'&'} <span className="text-red-500">
              Strong
