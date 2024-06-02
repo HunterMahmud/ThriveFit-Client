@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard";
 import Root from "../Layouts/Root";
 import AllTrainers from "../pages/AllTrainers/AllTrainers";
+import TrainerDetails from "../pages/AllTrainers/TrainerDetails";
 import AddNewClass from "../pages/Dashboard/AddNewClass/AddNewClass";
 import AllNewsLetter from "../pages/Dashboard/AllNewsLetter/AllNewsLetter";
 import BeATrainer from "../pages/Dashboard/BeATrainer/BeATrainer";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/alltrainers',
                 element: <AllTrainers/>
+            },
+            {
+                path: '/trainers/:id',
+                element: <TrainerDetails/>
             },
             {
                 path:'/login',

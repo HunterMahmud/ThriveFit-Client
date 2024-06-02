@@ -19,6 +19,7 @@ const BeATrainer = () => {
       skills: [],
       availableDays: [],
       availableTime: [],
+      aboutMe:''
     },
   });
 
@@ -208,6 +209,15 @@ const BeATrainer = () => {
             type="url"
             {...register("instagram")}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">About Yourself</label>
+          <textarea
+            {...register('aboutMe')}
+            className="mt-1 block w-full px-3 py-2 border bg-white text-gray-900 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            rows="4"
           />
         </div>
 
