@@ -23,7 +23,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/">
+        <NavLink className="text-base sm:text-lg lg:text-sm" to="/classes">
           All Classes
         </NavLink>
       </li>
