@@ -72,14 +72,7 @@ const Footer = () => {
                       Github
                     </a>
                   </li>
-                  <li>
-                    <a
-                      className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="#"
-                    >
-                      Free Products
-                    </a>
-                  </li>
+                  
                 </ul>
               </div>
               <div className="w-full lg:w-4/12 px-4">
