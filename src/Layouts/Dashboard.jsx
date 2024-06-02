@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -7,21 +7,22 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+  const isAdmin = true;
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-full min-h-screen  bg-gray-100">
       {/* Sidebar */}
       <div
         className={`fixed lg:relative z-20 w-64 bg-white shadow-lg lg:shadow-none lg:block ${
-          isSidebarOpen ? 'block' : 'hidden'
+          isSidebarOpen ? "block" : "hidden"
         } lg:flex lg:flex-col`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold">ThriveFit Dashboard</h2>
-          <button
-            className="lg:hidden text-gray-600"
-            onClick={toggleSidebar}
-          >
+          <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
               className="w-6 h-6"
               fill="none"
@@ -40,20 +41,59 @@ const Dashboard = () => {
         </div>
         <nav className="flex-grow p-4">
           <ul>
-            <li className="mb-2">
-              <NavLink to='/dashboard'>Dashboard</NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink to='/dashboard/allnewsletter'>All NewsLetter</NavLink>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block p-2 text-gray-700 rounded hover:bg-gray-200">Profile</a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block p-2 text-gray-700 rounded hover:bg-gray-200">Settings</a>
-            </li>
-            <li className="mb-2">
-              <a href="#" className="block p-2 text-gray-700 rounded hover:bg-gray-200">Logout</a>
+            {/* admin only navlinks */}
+            {isAdmin && (
+              <>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                    isActive("/dashboard/allnewsletter") ? "bg-gray-200" : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/allnewsletter">
+                    All NewsLetter
+                  </NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                    isActive("/dashboard/alltrainers") ? "bg-gray-200" : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/alltrainers">All Trainers</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                    isActive("/dashboard/appliedtrainers") ? "bg-gray-200" : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/appliedtrainers">
+                    Applied Trainers
+                  </NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                    isActive("/dashboard/balance") ? "bg-gray-200" : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/balance">Balance</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                    isActive("/dashboard/addnewclass") ? "bg-gray-200" : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/addnewclass">Add New Class</NavLink>
+                </li>
+              </>
+            )}
+            {/* trainer only navlinks */}
+
+            {/* member only navlinks */}
+            <li
+              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
+                isActive("/dashboard/bratrainer") ? "bg-gray-200" : ""
+              }`}
+            >
+              <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
             </li>
           </ul>
         </nav>
@@ -62,10 +102,7 @@ const Dashboard = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col transition-all duration-300">
         <header className="flex items-center justify-between bg-white p-4 border-b border-gray-200">
-          <button
-            className="lg:hidden text-gray-600"
-            onClick={toggleSidebar}
-          >
+          <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
               className="w-6 h-6"
               fill="none"
@@ -84,9 +121,7 @@ const Dashboard = () => {
           <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
         </header>
         <main className="flex-grow p-4">
-          {/* Your main content goes here */}
-          <h2 className="text-2xl font-semibold mb-4">Dashboard Content</h2>
-          <Outlet/>
+          <Outlet />
         </main>
       </div>
     </div>

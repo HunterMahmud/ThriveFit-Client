@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard";
 import Root from "../Layouts/Root";
+import AllTrainers from "../pages/AllTrainers/AllTrainers";
+import AddNewClass from "../pages/Dashboard/AddNewClass/AddNewClass";
 import AllNewsLetter from "../pages/Dashboard/AllNewsLetter/AllNewsLetter";
+import BeATrainer from "../pages/Dashboard/BeATrainer/BeATrainer";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound";
@@ -18,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home/>
+            },
+            {
+                path: '/alltrainers',
+                element: <AllTrainers/>
             },
             {
                 path:'/login',
@@ -37,6 +44,18 @@ const router = createBrowserRouter([
             {
                 path:'allnewsletter',
                 element: <AllNewsLetter/>
+            },
+            {
+                path: 'addnewclass',
+                element: <AddNewClass/>
+            },
+            /// trainer related paths
+
+
+            /// member related paths
+            {
+                path:'beatrainer',
+                element: <BeATrainer/>
             }
         ]
     }

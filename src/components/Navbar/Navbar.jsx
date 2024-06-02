@@ -18,8 +18,8 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/">
-          All Trainer
+        <NavLink className="text-base sm:text-lg lg:text-sm" to="/alltrainers">
+          All Trainers
         </NavLink>
       </li>
       <li>
