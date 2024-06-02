@@ -5,10 +5,20 @@ import useAuthProvider from "../../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import CreatableSelect from "react-select/creatable";
+import { useQuery } from '@tanstack/react-query';
 
 const BeATrainer = () => {
   const { user } = useAuthProvider();
   const axiosSecure = useAxiosSecure();
+const {data:className=[], isLoading} = useQuery({
+  queryKey:['className'],
+  queryFn: async()=>{
+    const {data} = await axiosSecure.get('/classnames')
+    return data;
+  }
+})
+// console.log(className);
+
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       fullName: "",
@@ -22,14 +32,21 @@ const BeATrainer = () => {
       aboutMe:''
     },
   });
-
-  const skillsOptions = [
-    { value: "strength_training", label: "Strength Training" },
-    { value: "cardio", label: "Cardio" },
-    { value: "yoga", label: "Yoga" },
-    { value: "pilates", label: "Pilates" },
-    // Add more skills as needed
-  ];
+const skillsOptions = className.map(skill=> {
+  const skills={
+    value: skill.name,
+    label: skill.name
+  }
+  return skills
+})
+// console.log(skillsOptions);
+  // const skillsOptions = [
+  //   { value: "strength_training", label: "Strength Training" },
+  //   { value: "cardio", label: "Cardio" },
+  //   { value: "yoga", label: "Yoga" },
+  //   { value: "pilates", label: "Pilates" },
+  //   // Add more skills as needed
+  // ];
 
   const daysOptions = [
     { value: "sunday", label: "Sunday" },
@@ -52,8 +69,11 @@ const BeATrainer = () => {
     try {
       // Send data to the server
       const { data } = await axiosSecure.post("/trainers", trainerInfo);
-      console.log(data);
-      if (data) {
+      // console.log(data);
+      if(data?.message==='pending'){
+        toast.info('Already applied. Wait for admin approval!')
+      }
+      else if(data) {
         toast.success(
           "Application submitted successfully! Wait for admin approval."
         );
@@ -64,10 +84,10 @@ const BeATrainer = () => {
       console.log(error.message);
     }
   };
-
+  if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">Apply to Be a Trainer</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
