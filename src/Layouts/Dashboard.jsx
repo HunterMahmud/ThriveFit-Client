@@ -13,7 +13,7 @@ const Dashboard = () => {
   const isAdmin = true;
 
   return (
-    <div className="flex h-full min-h-screen  bg-gray-100">
+    <div className="flex h-full min-h-screen max-w-full">
       {/* Sidebar */}
       <div
         className={`fixed lg:relative z-20 w-64 bg-white shadow-lg lg:shadow-none lg:block ${
@@ -100,7 +100,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col transition-all duration-300">
+      <div className="flex-1 flex flex-col transition-all duration-300 ">
         <header className="flex items-center justify-between bg-white p-4 border-b border-gray-200">
           <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
@@ -120,7 +120,7 @@ const Dashboard = () => {
           </button>
           <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
         </header>
-        <main className="flex-grow p-4">
+        <main className="flex-grow p-4 bg-white max-w-[100vw] ">
           <Outlet />
         </main>
       </div>

@@ -7,6 +7,7 @@ import Classes from "../pages/Classes/Classes";
 import AddNewClass from "../pages/Dashboard/AddNewClass/AddNewClass";
 import AllNewsLetter from "../pages/Dashboard/AllNewsLetter/AllNewsLetter";
 import BeATrainer from "../pages/Dashboard/BeATrainer/BeATrainer";
+import DashboardAllTrainers from "../pages/Dashboard/DashboardAllTrainers/DashboardAllTrainers";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound";
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: 'addnewclass',
                 element: <AddNewClass/>
+            },
+            {
+                path: 'alltrainers',
+                element: <DashboardAllTrainers/>
             },
             /// trainer related paths
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import useAuthProvider from './../../hooks/useAuthProvider';
-import useAxiosSecure from './../../hooks/useAxiosSecure';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuthProvider from "./../../hooks/useAuthProvider";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const Payment = () => {
   const { user } = useAuthProvider();
@@ -9,41 +9,57 @@ const Payment = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const today = new Date();
-  
+
   const { trainer, selectedSlot, pkgName, price } = location.state || {};
-  console.log(location.state);
+//   console.log(location.state);
   const handleConfirm = async () => {
+    // console.log({
+    //   trainerName: trainer.fullName,
+    //   trainerId: trainer._id,
+    //   slotName: selectedSlot,
+    //   pkgName,
+    //   price,
+    //   classes: trainer.skills,
+    //   userName: user?.displayName,
+    //   userEmail: user.email,
+    //   orderDate: today,
+    // });
     try {
-      // Send data to the server
-      const response = await axiosSecure.post('/payment', {
-        trainerName:trainer.fullName,
+      //   Send data to the server
+
+      const response = await axiosSecure.post("/payment", {
+        trainerName: trainer.fullName,
+        trainerId: trainer._id,
         slotName: selectedSlot,
-        packageName,
+        pkgName,
         price,
-        userName: user.fullName,
+        classes: trainer.skills,
+        userName: user?.displayName,
         userEmail: user.email,
-        userAge: user.age,
-        userYearsOfExperience: user.yearsOfExperience,
+        orderDate: today,
       });
-      if (response.data) {
+      if (response.data?.insertedId) {
         // Handle success (e.g., navigate to a success page, show a success message)
-        console.log('Payment successful:', response.data);
-        navigate('/success'); // Replace with your success page route
+        console.log("Payment successful!");
+        //TODO: navigate user to the all the payment page he/she occured
+        // navigate("/success"); // Replace with your success page route
       }
     } catch (error) {
-      console.error('Error processing payment:', error);
+      console.error("Error processing payment:", error);
       // Handle error (e.g., show an error message)
     }
   };
 
   return (
     <div className="container mx-auto p-4 text-white">
-      <div className="border rounded-lg p-4 shadow-md">
+      <div className="border rounded-lg p-4 shadow-md overflow-x-auto">
         <h1 className="text-3xl font-bold mb-4">Payment Details</h1>
         <table className="table-auto w-full bg-gray-800 text-white">
           <tbody>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Trainer Name</td>
+              <td className="px-4 py-2 font-medium text-gray-100">
+                Trainer Name
+              </td>
               <td className="px-4 py-2">{trainer.fullName}</td>
             </tr>
             <tr className="border-b border-gray-700">
@@ -51,7 +67,9 @@ const Payment = () => {
               <td className="px-4 py-2">{selectedSlot}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Package Name</td>
+              <td className="px-4 py-2 font-medium text-gray-100">
+                Package Name
+              </td>
               <td className="px-4 py-2">{pkgName}</td>
             </tr>
             <tr className="border-b border-gray-700">
@@ -63,15 +81,17 @@ const Payment = () => {
               <td className="px-4 py-2">{user.displayName}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Your Email</td>
+              <td className="px-4 py-2 font-medium text-gray-100">
+                Your Email
+              </td>
               <td className="px-4 py-2">{user.email}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Order Date</td>
+              <td className="px-4 py-2 font-medium text-gray-100">
+                Order Date
+              </td>
               <td className="px-4 py-2">{today.toLocaleDateString()}</td>
             </tr>
-            
-            
           </tbody>
         </table>
         <button
@@ -86,7 +106,6 @@ const Payment = () => {
 };
 
 export default Payment;
-
 
 /*
 
