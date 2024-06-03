@@ -39,14 +39,14 @@ const Dashboard = () => {
             </svg>
           </button>
         </div>
-        <nav className="flex-grow p-4">
+        <nav className="flex-grow p-4 bg-gray-200">
           <ul>
             {/* admin only navlinks */}
             {isAdmin && (
               <>
                 <li
-                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                    isActive("/dashboard/allnewsletter") ? "bg-gray-200" : ""
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/allnewsletter") ? "bg-blue-600 text-white" : ""
                   }`}
                 >
                   <NavLink to="/dashboard/allnewsletter">
@@ -54,15 +54,15 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                    isActive("/dashboard/alltrainers") ? "bg-gray-200" : ""
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/alltrainers") ? "bg-blue-600 text-white" : ""
                   }`}
                 >
                   <NavLink to="/dashboard/alltrainers">All Trainers</NavLink>
                 </li>
                 <li
-                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                    isActive("/dashboard/appliedtrainers") ? "bg-gray-200" : ""
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/appliedtrainers") ? "bg-blue-600 text-white" : ""
                   }`}
                 >
                   <NavLink to="/dashboard/appliedtrainers">
@@ -70,15 +70,15 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li
-                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                    isActive("/dashboard/balance") ? "bg-gray-200" : ""
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/balance") ? "bg-blue-600 text-white" : ""
                   }`}
                 >
                   <NavLink to="/dashboard/balance">Balance</NavLink>
                 </li>
                 <li
-                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                    isActive("/dashboard/addnewclass") ? "bg-gray-200" : ""
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/addnewclass") ? "bg-blue-600 text-white" : ""
                   }`}
                 >
                   <NavLink to="/dashboard/addnewclass">Add New Class</NavLink>
@@ -89,8 +89,8 @@ const Dashboard = () => {
 
             {/* member only navlinks */}
             <li
-              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                isActive("/dashboard/beatrainer") ? "bg-gray-200" : ""
+              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                isActive("/dashboard/beatrainer") ? "bg-blue-600 text-white" : ""
               }`}
             >
               <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
