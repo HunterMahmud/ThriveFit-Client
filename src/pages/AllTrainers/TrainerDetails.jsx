@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { LuMailPlus } from "react-icons/lu";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useTrainerData from "./../../hooks/useTrainerData";
 
 const TrainerDetails = () => {

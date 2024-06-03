@@ -90,11 +90,12 @@ const Dashboard = () => {
             {/* member only navlinks */}
             <li
               className={`block p-2 mb-2 text-gray-700 rounded hover:bg-gray-200 ${
-                isActive("/dashboard/bratrainer") ? "bg-gray-200" : ""
+                isActive("/dashboard/beatrainer") ? "bg-gray-200" : ""
               }`}
             >
-              <NavLink to="/dashboard/">add </NavLink>
+              <NavLink to="dashboard/beatrainer">Be A Trainer</NavLink>
             </li>
+
           </ul>
         </nav>
       </div>

@@ -1,29 +1,9 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import useAuthProvider from "./../../../hooks/useAuthProvider";
-import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import useAllTrainersData from "./../../../hooks/useAllTrainersData";
 
 const DashboardAllTrainers = () => {
-  const { user } = useAuthProvider();
-  const axiosSecure = useAxiosSecure();
-
-  const { data: trainers = [], refetch } = useQuery({
-    queryKey: ["trainers", user?.email],
-    queryFn: async () => {
-      const { data } = await axiosSecure("/trainers");
-      return data;
-    },
-  });
-
-  //   const deleteTrainerMutation = useMutation({
-  //     mutationFn: async (trainerId) => {
-  //       await axiosSecure.patch(`/trainers/${trainerId}/role`, { role: 'Member' });
-  //     },
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries('trainers');
-  //     },
-  //   });
+  const [trainers, refetch] = useAllTrainersData("success");
 
   const handleDelete = async (trainerId, email) => {
     // deleteTrainerMutation.mutate(trainerId);
