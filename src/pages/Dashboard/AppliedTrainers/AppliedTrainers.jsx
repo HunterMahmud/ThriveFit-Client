@@ -41,13 +41,13 @@ const AppliedTrainers = () => {
                   <img
                     src={trainer.profileImage}
                     alt={trainer.fullName}
-                    className="w-16 h-16 rounded-full"
+                    className="w-16 h-16 rounded-full object-cover"
                   />
                 </td>
-                <td className="border px-4 py-2">{trainer.fullName}</td>
-                <td className="border px-4 py-2">{trainer.email}</td>
-                <td className="border px-4 py-2">{trainer.age}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">{trainer.fullName}</td>
+                <td className="border px-4 py-2 text-center">{trainer.email}</td>
+                <td className="border px-4 py-2 text-center">{trainer.age}</td>
+                <td className="border px-4 py-2 text-center">
                   <button
                     onClick={() => handleManageClick(trainer)}
                     className="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"

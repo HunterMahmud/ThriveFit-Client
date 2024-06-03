@@ -93,7 +93,7 @@ const Dashboard = () => {
                 isActive("/dashboard/beatrainer") ? "bg-gray-200" : ""
               }`}
             >
-              <NavLink to="dashboard/beatrainer">Be A Trainer</NavLink>
+              <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
             </li>
 
           </ul>

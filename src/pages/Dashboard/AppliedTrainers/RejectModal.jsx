@@ -20,18 +20,18 @@ console.log(trainer);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative bg-white p-4 rounded shadow-lg w-full max-w-md">
+      <div className="relative bg-white text-gray-900 p-4 rounded shadow-lg w-full max-w-md">
         <button
           onClick={onRequestClose}
-          className="absolute top-2 py-1 p-2 text-lg bg-gray-200 right-2 text-gray-600 hover:text-gray-900"
+          className="absolute top-2 py-1 p-2 text-lg bg-gray-200 right-2 hover:bg-red-500 text-gray-900"
         >
           &times;
         </button>
-        <h2 className="text-2xl mb-4">Reject Trainer</h2>
+        <h2 className="text-2xl mb-4 font-bold text-center">Reject Trainer</h2>
         <div className="mb-4">
           <img src={trainer.profileImage} alt={trainer.fullName} className="w-32 h-32 rounded-full mx-auto" />
-          <h3 className="text-xl mt-4">{trainer.fullName}</h3>
-          <p>{trainer.email}</p>
+          <h3 className="text-xl mt-4 font-bold text-center">{trainer.fullName}</h3>
+          <p>Email: {trainer.email}</p>
           <p>Age: {trainer.age}</p>
           <p>Experience: {trainer.yearsOfExperience} years</p>
           <p>Skills: {trainer.skills.map(skill => skill.label).join(', ')}</p>
@@ -39,14 +39,14 @@ console.log(trainer);
           <p>Slot: {trainer.availableTime.map(time => time.label).join(', ')}</p>
         </div>
         <textarea
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border bg-white  rounded"
           placeholder="Enter feedback"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />
         <button
           onClick={handleReject}
-          className="block w-full bg-red-600 text-white py-2 rounded mt-4"
+          className="block w-full bg-blue-600 text-white py-2 rounded mt-4"
         >
           Submit Feedback
         </button>

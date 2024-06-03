@@ -1,20 +1,10 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import useAuthProvider from './../../hooks/useAuthProvider';
-import useAxiosSecure from './../../hooks/useAxiosSecure';
-import TrainerCard from '../../components/AllTrainer/TrainerCard';
+import React from "react";
+import TrainerCard from "../../components/AllTrainer/TrainerCard";
+import useAllTrainersData from "./../../hooks/useAllTrainersData";
 
 const AllTrainers = () => {
-  const { user } = useAuthProvider();
-  const axiosSecure = useAxiosSecure();
-  const { data: trainers = [] } = useQuery({
-    queryKey: ['trainers', user?.email],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get('/trainers');
-      return data;
-    },
-  });
-
+  const [trainers] = useAllTrainersData("success");
+  console.log(trainers);
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">All Trainers</h1>
