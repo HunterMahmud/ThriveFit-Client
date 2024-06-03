@@ -1,25 +1,14 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { LuMailPlus } from "react-icons/lu";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useTrainerData from "./../../hooks/useTrainerData";
 
 const TrainerDetails = () => {
   const { id } = useParams();
-  const axiosSecure = useAxiosSecure();
-  const {
-    data: trainer = {},
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["trainer", id],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/trainers/${id}`);
-      return data;
-    },
-  });
+  const [trainer, isLoading, error] = useTrainerData(id);
   // console.log(trainer);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading trainer details</div>;
@@ -31,7 +20,10 @@ const TrainerDetails = () => {
           <div className="bg-gray-800 text-white shadow-md rounded-lg p-6">
             <div className="flex items-center mb-6">
               <img
-                src={trainer.profileImage}
+                src={
+                  trainer.profileImage ||
+                  "https://i.ibb.co/fFYknQL/image-not-found.jpg"
+                }
                 alt={trainer.fullName}
                 className="w-24 h-24 rounded-full mr-4 object-cover"
               />
@@ -101,7 +93,7 @@ const TrainerDetails = () => {
               {trainer.availableTime.map((slot, index) => (
                 <Link
                   key={index}
-                  to={`/trainer/${trainer._id}/book?slot=${slot.value}`}
+                  to={`/trainer/${trainer._id}?slot=${slot.value}`}
                   className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
                 >
                   {slot.label}
@@ -123,10 +115,11 @@ const TrainerDetails = () => {
         <div className="w-full rounded-lg bg-cover bg-[url('https://i.ibb.co/f95QT6x/bodybuildertrainer.jpg')] bg-center ">
           <div className="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
             <h1 className="text-5xl antialiased font-semibold leading-none text-center ">
-            Empower Your Passion <br /> Become a Trainer
+              Empower Your Passion <br /> Become a Trainer
             </h1>
             <p className="pt-2 pb-8 text-xl antialiased text-center">
-            Share your fitness expertise and help others achieve their goals. Join our team of passionate trainers.
+              Share your fitness expertise and help others achieve their goals.
+              Join our team of passionate trainers.
             </p>
             <div className="flex flex-row justify-center items-center">
               <Link

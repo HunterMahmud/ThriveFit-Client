@@ -15,7 +15,7 @@ const Classes = () => {
   });
   // console.log(classes);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)  {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
   if (error) return <div>Error loading classes</div>;
  
  
@@ -27,7 +27,7 @@ const Classes = () => {
       {classes.map((classItem) => (
         <div key={classItem._id} className="border rounded-lg p-4 shadow-md max-w-[400px]">
           <h2 className="text-2xl font-bold text-gray-100">{classItem.name}</h2>
-          <img src={classItem.classPhoto} alt={classItem.name} className="w-full h-56 object-cover mt-2 rounded-lg"/>
+          <img src={classItem.classPhoto || 'https://i.ibb.co/fFYknQL/image-not-found.jpg'} alt={classItem.name} className="w-full h-56 object-cover mt-2 rounded-lg"/>
           <p className="mt-2 text-gray-100">{classItem.description}</p>
           <p className="mt-2 text-gray-100"><strong>Duration:</strong> {classItem.duration} minutes</p>
           <p className="mt-2 text-gray-100"><strong>Difficulty:</strong> {classItem.difficulty}</p>
@@ -38,20 +38,18 @@ const Classes = () => {
           </ul>
           <h3 className="text-xl font-bold mt-4">Trainers</h3>
           <div className="flex mt-2 space-x-4">
-            {classItem.foundTrainers.map((trainer) => (
-              <Link key={trainer._id} to={`/trainer/${trainer._id}`} className="flex-shrink-0">
+            {classItem?.foundTrainers.length >0 ? classItem?.foundTrainers?.slice(0,3).map((trainer) => (
+              <Link key={trainer._id} to={`/trainers/${trainer._id}`} className="flex-shrink-0">
                 <img
                   src={trainer.profileImage}
                   alt={trainer.fullName}
-                  className="w-16 h-16 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                   title={trainer.fullName}
                 />
               </Link>
-            ))}
+            )):<p className='text-sm'>No trainer found!</p>}
           </div>
-          <Link to={`/class/${classItem._id}`} className="mt-4 inline-block text-indigo-500 hover:text-indigo-700">
-            Know More
-          </Link>
+          
         </div>
       ))}
     </div>

@@ -10,7 +10,9 @@ import BeATrainer from "../pages/Dashboard/BeATrainer/BeATrainer";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound";
+import Payment from "../pages/Payment/Payment";
 import Register from "../pages/Register/Register";
+import TrainerBooked from "../pages/TrainerBooked/TrainerBooked";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -33,8 +35,16 @@ const router = createBrowserRouter([
                 element: <TrainerDetails/>
             },
             {
+                path: '/trainer/:trainerId',
+                element: <TrainerBooked/>
+            },
+            {
                 path: '/classes',
                 element: <Classes/>
+            },
+            {
+                path: '/payment',
+                element: <Payment/>
             },
            
             {
