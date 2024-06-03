@@ -13,7 +13,7 @@ const Dashboard = () => {
   const isAdmin = true;
 
   return (
-    <div className="flex h-full min-h-screen max-w-full">
+    <div className="flex h-full min-h-screen max-w-[100vw]">
       {/* Sidebar */}
       <div
         className={`fixed lg:relative z-20 w-64 bg-white shadow-lg lg:shadow-none lg:block ${
@@ -120,7 +120,7 @@ const Dashboard = () => {
           </button>
           <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
         </header>
-        <main className="flex-grow p-4 bg-white max-w-[100vw] ">
+        <main className="flex-grow bg-white max-w-[100vw] ">
           <Outlet />
         </main>
       </div>
