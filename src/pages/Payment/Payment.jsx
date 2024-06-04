@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import useAuthProvider from "./../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
@@ -40,12 +41,12 @@ const Payment = () => {
       });
       if (response.data?.insertedId) {
         // Handle success (e.g., navigate to a success page, show a success message)
-        console.log("Payment successful!");
+        toast.success("Payment successful!");
         //TODO: navigate user to the all the payment page he/she occured
-        // navigate("/success"); // Replace with your success page route
+        navigate("/alltrainers"); // Replace with your success page route
       }
     } catch (error) {
-      console.error("Error processing payment:", error);
+      toast.error("Error processing payment");
       // Handle error (e.g., show an error message)
     }
   };
@@ -114,6 +115,7 @@ import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuthProvider from './../../hooks/useAuthProvider';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const Payment = () => {
   const { user } = useAuthProvider();
