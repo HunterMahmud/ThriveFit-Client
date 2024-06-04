@@ -7,7 +7,6 @@ const AddNewClass = () => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    duration: "",
     difficulty: "",
     benefits: [],
     classPhoto: "",
@@ -39,7 +38,6 @@ const AddNewClass = () => {
     e.preventDefault();
     if (
       formData.name &&
-      formData.duration &&
       formData.classPhoto &&
       formData.description &&
       formData.difficulty &&
@@ -53,7 +51,6 @@ const AddNewClass = () => {
           setFormData({
             name: "",
             description: "",
-            duration: "",
             difficulty: "",
             benefits: [],
             classPhoto: "",
@@ -70,7 +67,7 @@ const AddNewClass = () => {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto p-4 bg-white rounded shadow-md">
+    <div className="w-full max-w-lg mx-auto p-4 bg-white rounded shadow-md mt-7">
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Add New Class
       </h1>
@@ -86,17 +83,7 @@ const AddNewClass = () => {
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Duration (minutes)</label>
-          <input
-            type="number"
-            name="duration"
-            value={formData.duration}
-            onChange={handleChange}
-            className="w-full p-2 border-2 rounded bg-white"
-            required
-          />
-        </div>
+        
         <div className="mb-4">
           <label className="block text-gray-700">Image URL</label>
           <input

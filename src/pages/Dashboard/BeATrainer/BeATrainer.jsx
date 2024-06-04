@@ -5,18 +5,11 @@ import useAuthProvider from "../../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import CreatableSelect from "react-select/creatable";
-import { useQuery } from '@tanstack/react-query';
 
 const BeATrainer = () => {
   const { user } = useAuthProvider();
   const axiosSecure = useAxiosSecure();
-const {data:className=[], isLoading} = useQuery({
-  queryKey:['className'],
-  queryFn: async()=>{
-    const {data} = await axiosSecure.get('/classnames')
-    return data;
-  }
-})
+
 // console.log(className);
 
   const { register, handleSubmit, control, reset } = useForm({
@@ -28,25 +21,12 @@ const {data:className=[], isLoading} = useQuery({
       profileImage: "",
       skills: [],
       availableDays: [],
-      availableTime: [],
+      availableTime: 0,
       aboutMe:''
     },
   });
-const skillsOptions = className.map(skill=> {
-  const skills={
-    value: skill.name,
-    label: skill.name
-  }
-  return skills
-})
-// console.log(skillsOptions);
-  // const skillsOptions = [
-  //   { value: "strength_training", label: "Strength Training" },
-  //   { value: "cardio", label: "Cardio" },
-  //   { value: "yoga", label: "Yoga" },
-  //   { value: "pilates", label: "Pilates" },
-  //   // Add more skills as needed
-  // ];
+
+
 
   const daysOptions = [
     { value: "sunday", label: "Sunday" },
@@ -63,9 +43,12 @@ const skillsOptions = className.map(skill=> {
     const trainerInfo = {
       ...data,
       age: parseInt(data.age),
+      slots:[],
+      availableTime: parseInt(data.availableTime),
       yearsOfExperience: parseInt(data.yearsOfExperience),
       status: "pending",
     };
+    // console.log(trainerInfo);
     try {
       // Send data to the server
       const { data } = await axiosSecure.post("/trainers", trainerInfo);
@@ -84,7 +67,7 @@ const skillsOptions = className.map(skill=> {
       console.log(error.message);
     }
   };
-  if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
+  //if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
@@ -162,18 +145,18 @@ const skillsOptions = className.map(skill=> {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
+        
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Skills
+              Skills
           </label>
           <Controller
             name="skills"
             control={control}
             render={({ field }) => (
-              <Select
+              <CreatableSelect
                 {...field}
                 isMulti
-                options={skillsOptions}
                 className="basic-multi-select"
                 classNamePrefix="select"
               />
@@ -200,19 +183,22 @@ const skillsOptions = className.map(skill=> {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Available Time
+            Available Time (hour)
           </label>
-          <Controller
-            name="availableTime"
-            control={control}
-            render={({ field }) => (
-              <CreatableSelect
-                {...field}
-                isMulti
-                className="basic-multi-select"
-                classNamePrefix="select"
-              />
-            )}
+          <input
+          placeholder="Ex: 12"
+            type="number"
+            {...register("availableTime", {
+              required: {
+                value: true,
+                message: "This field is required.",
+              },
+              min: {
+                value: 0,
+                message: "Experience cann't be lower than zero.",
+              },
+            })}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
 

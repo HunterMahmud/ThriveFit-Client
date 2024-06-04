@@ -12,6 +12,7 @@ const ManageModal = ({ isOpen, onRequestClose, trainer }) => {
       const { data } = await axiosSecure.patch(`/trainers/${trainer._id}`, {
         status: "success",
       });
+      
       if (data.modifiedCount > 0) {
         const { data: isTrainer } = await axiosSecure.patch(
           `/user/${trainer.email}`,
@@ -70,9 +71,7 @@ const ManageModal = ({ isOpen, onRequestClose, trainer }) => {
                 .map((availableDay) => availableDay.label)
                 .join(", ")}
             </p>
-            <p>
-              Slot: {trainer.availableTime.map((time) => time.label).join(", ")}
-            </p>
+            
           </div>
           <button
             onClick={handleConfirm}

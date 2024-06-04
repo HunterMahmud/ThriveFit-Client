@@ -1,12 +1,13 @@
 import React from "react";
 import { toast } from "react-toastify";
 import useAllTrainersData from "./../../../hooks/useAllTrainersData";
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
 
 const DashboardAllTrainers = () => {
-  const [trainers, refetch] = useAllTrainersData("success");
+  const axiosSecure = useAxiosSecure();
+  const [trainers, refetch, isLoading] = useAllTrainersData("success");
 
   const handleDelete = async (trainerId, email) => {
-    // deleteTrainerMutation.mutate(trainerId);
     // console.log(trainerId);
     try {
       const { data } = await axiosSecure.delete(`/trainers/${trainerId}`);
@@ -21,8 +22,13 @@ const DashboardAllTrainers = () => {
           refetch();
         }
       }
-    } catch (err) {}
+    } catch (err) {
+      toast.error("Can't delete error occured!");
+    }
   };
+  if(isLoading) {
+    return <p>loading...</p>
+  }
 
   return (
     <div className="w-full mx-auto p-4 ">

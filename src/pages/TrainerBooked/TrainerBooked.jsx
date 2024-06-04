@@ -38,7 +38,7 @@ const TrainerBooked = () => {
   const navigate = useNavigate();
   const selectedSlot = searchParams.get("slot");
   
-  const [trainer, isLoading] = useTrainerData(trainerId);
+  const [trainer, isLoading] = useTrainerData({id:trainerId});
   // console.log(trainer);
   // console.log(selectedSlot);
   const handleJoinNow = () => {

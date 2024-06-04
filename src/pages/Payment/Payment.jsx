@@ -31,6 +31,7 @@ const Payment = () => {
       const response = await axiosSecure.post("/payment", {
         trainerName: trainer.fullName,
         trainerId: trainer._id,
+        trainerEmail: trainer.email,
         slotName: selectedSlot,
         pkgName,
         price,

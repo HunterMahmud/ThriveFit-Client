@@ -7,7 +7,7 @@ import useTrainerData from "./../../hooks/useTrainerData";
 
 const TrainerDetails = () => {
   const { id } = useParams();
-  const [trainer, isLoading, error] = useTrainerData(id);
+  const [trainer, isLoading, error] = useTrainerData({id});
   // console.log(trainer);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading trainer details</div>;
@@ -29,15 +29,15 @@ const TrainerDetails = () => {
               <div>
                 <h2 className="text-2xl font-bold">{trainer.fullName}</h2>
                 <p className="text-gray-200">
-                  {trainer.yearsOfExperience} years of experience
+                  {trainer?.yearsOfExperience} years of experience
                 </p>
               </div>
             </div>
             <div className="flex justify-between flex-col sm:flex-row">
               <div>
-                <h3 className="text-xl font-bold mb-2">Expertise</h3>
+                <h3 className="text-xl font-bold mb-2">Skills</h3>
                 <ul className="list-disc list-inside">
-                  {trainer.skills.map((skill, index) => (
+                  {trainer?.skills?.map((skill, index) => (
                     <li key={index}>{skill.label}</li>
                   ))}
                 </ul>
@@ -45,7 +45,7 @@ const TrainerDetails = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Available Days</h3>
                 <ul className="list-disc list-inside">
-                  {trainer.availableDays.map((day, index) => (
+                  {trainer?.availableDays?.map((day, index) => (
                     <li key={index}>{day.label}</li>
                   ))}
                 </ul>
@@ -54,7 +54,7 @@ const TrainerDetails = () => {
             <div className="mt-4">
               <h3 className="text-xl font-bold mb-2">Contact</h3>
               <div className="flex space-x-4">
-                {trainer.facebook && (
+                {trainer?.facebook && (
                   <a
                     href={trainer.facebook}
                     target="_blank"
@@ -63,7 +63,7 @@ const TrainerDetails = () => {
                     <FaFacebook className="text-2xl text-blue-500" />
                   </a>
                 )}
-                {trainer.instagram && (
+                {trainer?.instagram && (
                   <a
                     href={trainer.instagram}
                     target="_blank"
@@ -72,7 +72,7 @@ const TrainerDetails = () => {
                     <FaInstagram className="text-2xl text-pink-500" />
                   </a>
                 )}
-                {trainer.email && (
+                {trainer?.email && (
                   <a
                     href={`mailto:${trainer.email}`}
                     target="_blank"
@@ -88,7 +88,8 @@ const TrainerDetails = () => {
         <div className="lg:col-span-1">
           <div className="bg-gray-800 text-white shadow-md rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Available Slots</h3>
-            <div className="grid grid-cols-1 gap-2">
+            {/* Todo: slot will be available here */}
+            {/* <div className="grid grid-cols-1 gap-2">
               {trainer.availableTime.map((slot, index) => (
                 <Link
                   key={index}
@@ -98,7 +99,7 @@ const TrainerDetails = () => {
                   {slot.label}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

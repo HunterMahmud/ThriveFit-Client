@@ -4,7 +4,7 @@ import useAllTrainersData from "./../../hooks/useAllTrainersData";
 
 const AllTrainers = () => {
   const [trainers] = useAllTrainersData("success");
-  console.log(trainers);
+  // console.log(trainers);
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">All Trainers</h1>

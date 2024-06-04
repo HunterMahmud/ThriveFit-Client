@@ -17,6 +17,9 @@ import Payment from "../pages/Payment/Payment";
 import Register from "../pages/Register/Register";
 import TrainerBooked from "../pages/TrainerBooked/TrainerBooked";
 import PrivateRoute from "./PrivateRoute";
+import ManageSlots from './../pages/Dashboard/ManageSlots/ManageSlots';
+import AddNewSlot from "../pages/Dashboard/AddNewSlot/AddNewSlot";
+import AddNewForum from './../pages/Dashboard/AddNewForum/AddNewForum';
 
 
 const router = createBrowserRouter([
@@ -85,7 +88,20 @@ const router = createBrowserRouter([
                 path: 'appliedtrainers',
                 element: <AppliedTrainers/>
             },
+
             /// trainer related paths
+            {
+                path: 'manageslot',
+                element: <ManageSlots/>
+            },
+            {
+                path: 'addnewslot',
+                element: <AddNewSlot/>
+            },
+            {
+                path: 'addnewforum',
+                element: <AddNewForum/>
+            },
 
 
             /// member related paths

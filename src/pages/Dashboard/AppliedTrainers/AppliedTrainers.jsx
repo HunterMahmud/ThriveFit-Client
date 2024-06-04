@@ -3,7 +3,7 @@ import useAllTrainersData from './../../../hooks/useAllTrainersData';
 import ManageModal from './ManageModal';
 
 const AppliedTrainers = () => {
-  const [trainers, refetch] = useAllTrainersData("pending");
+  const [trainers, refetch, isLoading] = useAllTrainersData("pending");
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
 
@@ -18,6 +18,9 @@ const AppliedTrainers = () => {
     refetch();
   };
 
+if(isLoading){
+  return <p>loading...</p>
+}
   return (
     <div className="w-full mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">

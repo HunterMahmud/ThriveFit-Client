@@ -18,16 +18,17 @@ const TrainerCard = ({ trainer }) => {
        
         <div className="mt-4">
           <h3 className="text-lg font-bold">Available Slots:</h3>
-          <ul className="list-disc list-inside">
+          {/* ToDO: available slot will be here */}
+          {/* <ul className="list-disc list-inside">
             {trainer.availableTime.map((slot, index) => (
               <li key={index}>{slot.label}</li>
             ))}
-          </ul>
+          </ul> */}
         </div>
         <div className="mt-4">
           <h3 className="text-lg font-bold">Skills:</h3>
           <ul className="list-disc list-inside">
-            {trainer.skills.map((skill, index) => (
+            {trainer?.skills?.map((skill, index) => (
               <li key={index}>{skill.label}</li>
             ))}
           </ul>

@@ -46,7 +46,9 @@ const Dashboard = () => {
               <>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/allnewsletter") ? "bg-blue-600 text-white" : ""
+                    isActive("/dashboard/allnewsletter")
+                      ? "bg-blue-600 text-white"
+                      : ""
                   }`}
                 >
                   <NavLink to="/dashboard/allnewsletter">
@@ -55,14 +57,18 @@ const Dashboard = () => {
                 </li>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/alltrainers") ? "bg-blue-600 text-white" : ""
+                    isActive("/dashboard/alltrainers")
+                      ? "bg-blue-600 text-white"
+                      : ""
                   }`}
                 >
                   <NavLink to="/dashboard/alltrainers">All Trainers</NavLink>
                 </li>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/appliedtrainers") ? "bg-blue-600 text-white" : ""
+                    isActive("/dashboard/appliedtrainers")
+                      ? "bg-blue-600 text-white"
+                      : ""
                   }`}
                 >
                   <NavLink to="/dashboard/appliedtrainers">
@@ -71,14 +77,18 @@ const Dashboard = () => {
                 </li>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/balance") ? "bg-blue-600 text-white" : ""
+                    isActive("/dashboard/balance")
+                      ? "bg-blue-600 text-white"
+                      : ""
                   }`}
                 >
                   <NavLink to="/dashboard/balance">Balance</NavLink>
                 </li>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/addnewclass") ? "bg-blue-600 text-white" : ""
+                    isActive("/dashboard/addnewclass")
+                      ? "bg-blue-600 text-white"
+                      : ""
                   }`}
                 >
                   <NavLink to="/dashboard/addnewclass">Add New Class</NavLink>
@@ -86,16 +96,48 @@ const Dashboard = () => {
               </>
             )}
             {/* trainer only navlinks */}
+            {
+              <>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/manageslot")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/manageslot">Manage Slots</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/addnewslot")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/addnewslot">Add New Slot</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/addnewforum")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/addnewforum">Add New Forum</NavLink>
+                </li>
+              </>
+            }
 
             {/* member only navlinks */}
             <li
               className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                isActive("/dashboard/beatrainer") ? "bg-blue-600 text-white" : ""
+                isActive("/dashboard/beatrainer")
+                  ? "bg-blue-600 text-white"
+                  : ""
               }`}
             >
               <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
             </li>
-
           </ul>
         </nav>
       </div>

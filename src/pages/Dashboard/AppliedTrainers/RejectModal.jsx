@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const RejectModal = ({ isOpen, onRequestClose, trainer }) => {
   const axiosSecure = useAxiosSecure();
   const [feedback, setFeedback] = useState('');
-console.log(trainer);
+// console.log(trainer);
   const handleReject = async () => {
     try {
       const {data} = await axiosSecure.patch(`/trainers/${trainer._id}/reject`, { feedback });
@@ -36,7 +36,7 @@ console.log(trainer);
           <p>Experience: {trainer.yearsOfExperience} years</p>
           <p>Skills: {trainer.skills.map(skill => skill.label).join(', ')}</p>
           <p>Available Days: {trainer.availableDays.map(availableDay => availableDay.label).join(', ')}</p>
-          <p>Slot: {trainer.availableTime.map(time => time.label).join(', ')}</p>
+          
         </div>
         <textarea
           className="w-full p-2 border bg-white  rounded"
