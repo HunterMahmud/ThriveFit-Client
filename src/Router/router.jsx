@@ -20,6 +20,8 @@ import PrivateRoute from "./PrivateRoute";
 import ManageSlots from './../pages/Dashboard/ManageSlots/ManageSlots';
 import AddNewSlot from "../pages/Dashboard/AddNewSlot/AddNewSlot";
 import AddNewForum from './../pages/Dashboard/AddNewForum/AddNewForum';
+import UserProfile from './../pages/Dashboard/UserProfile/UserProfile';
+import ActivityLog from './../pages/Dashboard/ActivityLog/ActivityLog';
 
 
 const router = createBrowserRouter([
@@ -108,7 +110,15 @@ const router = createBrowserRouter([
             {
                 path:'beatrainer',
                 element: <BeATrainer/>
-            }
+            },
+            {
+                path:'userprofile',
+                element: <UserProfile/>
+            },
+            {
+                path:'activitylog',
+                element: <ActivityLog/>
+            },
         ]
     }
 ])

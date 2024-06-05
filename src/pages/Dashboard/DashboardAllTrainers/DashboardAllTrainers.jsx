@@ -1,40 +1,56 @@
-import React from "react";
-import { toast } from "react-toastify";
-import useAllTrainersData from "./../../../hooks/useAllTrainersData";
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import useAllTrainersData from './../../../hooks/useAllTrainersData';
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import ConfirmationModal from './ConfirmationModal';
 
 const DashboardAllTrainers = () => {
   const axiosSecure = useAxiosSecure();
-  const [trainers, refetch, isLoading] = useAllTrainersData("success");
+  const [trainers, refetch, isLoading] = useAllTrainersData('success');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTrainer, setSelectedTrainer] = useState(null);
 
   const handleDelete = async (trainerId, email) => {
-    // console.log(trainerId);
     try {
       const { data } = await axiosSecure.delete(`/trainers/${trainerId}`);
-      // console.log(data);
       if (data.deletedCount > 0) {
         const { data: roleUpdate } = await axiosSecure.patch(`/user/${email}`, {
-          role: "member",
+          role: 'member',
         });
-        // console.log(roleUpdate);
         if (roleUpdate.modifiedCount > 0) {
-          toast.success("Trainer removed!");
+          toast.success('Trainer removed!');
           refetch();
         }
       }
     } catch (err) {
-      toast.error("Can't delete error occured!");
+      toast.error("Can't delete, error occurred!");
     }
   };
-  if(isLoading) {
-    return <p>loading...</p>
+
+  const openModal = (trainer) => {
+    setSelectedTrainer(trainer);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedTrainer(null);
+  };
+
+  const confirmDelete = () => {
+    if (selectedTrainer) {
+      handleDelete(selectedTrainer._id, selectedTrainer.email);
+    }
+    closeModal();
+  };
+
+  if (isLoading) {
+    return <p>loading...</p>;
   }
 
   return (
     <div className="w-full mx-auto p-4 ">
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
-        All Trainers
-      </h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">All Trainers</h1>
       <div className="w-full overflow-x-auto">
         <table className="w-full text-gray-800 bg-white ">
           <thead className="bg-gray-200">
@@ -56,13 +72,12 @@ const DashboardAllTrainers = () => {
                     className="w-16 h-16 rounded-full"
                   />
                 </td>
-                <td className="border px-4 py-2">{trainer.fullName}</td>
-                <td className="border px-4 py-2">{trainer.email}</td>
-                <td className="border px-4 py-2">{trainer.age}</td>
-
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">{trainer.fullName}</td>
+                <td className="border px-4 py-2 text-center">{trainer.email}</td>
+                <td className="border px-4 py-2 text-center">{trainer.age}</td>
+                <td className="border px-4 py-2 text-center">
                   <button
-                    onClick={() => handleDelete(trainer._id, trainer.email)}
+                    onClick={() => openModal(trainer)}
                     className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                   >
                     Delete
@@ -73,6 +88,11 @@ const DashboardAllTrainers = () => {
           </tbody>
         </table>
       </div>
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 };

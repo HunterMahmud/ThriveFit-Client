@@ -18,6 +18,8 @@ const AddNewForum = () => {
         author: user.displayName,
         email: user.email,
         role: user?.role || 'admin', // todo: have to implement the role
+        upvote: 0,
+        downvote:0
       };
 console.log(postData);
       const {data} = await axiosSecure.post('/forums', postData);

@@ -131,6 +131,24 @@ const Dashboard = () => {
             {/* member only navlinks */}
             <li
               className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                isActive("/dashboard/userprofile")
+                  ? "bg-blue-600 text-white"
+                  : ""
+              }`}
+            >
+              <NavLink to="/dashboard/userprofile">User Profile</NavLink>
+            </li>
+            <li
+              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                isActive("/dashboard/activitylog")
+                  ? "bg-blue-600 text-white"
+                  : ""
+              }`}
+            >
+              <NavLink to="/dashboard/activitylog">Activity Log</NavLink>
+            </li>
+            <li
+              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
                 isActive("/dashboard/beatrainer")
                   ? "bg-blue-600 text-white"
                   : ""
