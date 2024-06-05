@@ -1,6 +1,6 @@
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import useTrainerData from './../../hooks/useTrainerData';
+import useTrainerData from "./../../hooks/useTrainerData";
 
 const packages = [
   {
@@ -37,20 +37,24 @@ const TrainerBooked = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const selectedSlot = searchParams.get("slot");
-  
-  const [trainer, isLoading] = useTrainerData({id:trainerId});
-  // console.log(trainer);
+
+  const [trainer, isLoading] = useTrainerData({ id: trainerId });
+  // console.log(trainer.slots);
+  const slotInfo = trainer?.slots?.find((slot) => slot.slotName == selectedSlot);
+  console.log(slotInfo);
   // console.log(selectedSlot);
   const handleJoinNow = () => {
-    const pkg = packages.find(pkg=>pkg.name===selectedPackage)
+    const pkg = packages.find((pkg) => pkg.name === selectedPackage);
     // console.log(pkg);
-    navigate("/payment", {state:{
-      trainer,
-      selectedSlot,
-      pkgName: selectedPackage,
-      price:pkg.price
-    }});
-    
+    navigate("/payment", {
+      state: {
+        trainer,
+        selectedSlot,
+        selectedClasses: slotInfo.selectedClasses,
+        pkgName: selectedPackage,
+        price: pkg.price,
+      },
+    });
   };
 
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -67,20 +71,35 @@ const TrainerBooked = () => {
           </h1>
           <div className="flex flex-col md:flex-row justify-between mb-4 gap-5">
             <div className="md:w-1/2">
-              <img className="w-full h-full" src={trainer.profileImage} alt={trainer.profileImage} />
+              <img
+                className="w-full h-full"
+                src={trainer.profileImage}
+                alt={trainer.profileImage}
+              />
             </div>
             <div className="md:w-1/2">
               <h2 className="text-2xl font-semibold">
                 Trainer: {trainer.fullName}
               </h2>
               <p className="my-3">
-                <span className="font-semibold">Selected Slot:</span> {selectedSlot}
+                <span className="font-semibold">Selected Slot:</span>{" "}
+                {selectedSlot}
               </p>
+             
+
               <div className="mb-4">
                 <h3 className="text-xl font-semibold">Classes</h3>
                 <ul className="list-disc pl-5 mt-2">
-                  {trainer.skills.map((skill, index) => (
-                    <li key={index}>{skill.label}</li>
+                  {slotInfo?.selectedClasses?.map((cls, index) => (
+                    <li key={index}>{cls.label}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mb-4">
+                <h3 className="text-xl font-semibold">Available Days</h3>
+                <ul className="list-disc pl-5 mt-2">
+                  {slotInfo?.availableDays?.map((day, index) => (
+                    <li key={index}>{day.label}</li>
                   ))}
                 </ul>
               </div>

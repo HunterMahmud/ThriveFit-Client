@@ -6,7 +6,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Are you sure you want to delete?</h2>
+        <h2 className="text-xl font-bold mb-4 text-black">Are you sure you want to delete?</h2>
         <div className="flex justify-end">
           <button
             onClick={onClose}

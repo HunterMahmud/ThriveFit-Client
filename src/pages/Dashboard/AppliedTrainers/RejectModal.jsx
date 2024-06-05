@@ -9,10 +9,13 @@ const RejectModal = ({ isOpen, onRequestClose, trainer }) => {
   const handleReject = async () => {
     try {
       const {data} = await axiosSecure.patch(`/trainers/${trainer._id}/reject`, { feedback });
-      console.log(data);
-      onRequestClose();
+      // console.log(data);
+      if(data.modifiedCount>0){
+        toast.success("Rejected");
+        onRequestClose();
+      }
     } catch (error) {
-      console.error('Error rejecting trainer:', error);
+      toast.error('Error rejecting trainer:');
     }
   };
 

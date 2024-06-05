@@ -58,13 +58,13 @@ const UserProfile = () => {
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block  text-sm font-medium text-gray-700">
             Full Name
           </label>
           <input
             type="text"
             {...register("fullName", { required: true })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border bg-white border-gray-300 rounded"
             placeholder="Enter your full name"
           />
         </div>
@@ -75,7 +75,7 @@ const UserProfile = () => {
           <input
             type="text"
             {...register("profilePicture")}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border bg-white border-gray-300 rounded"
             placeholder="Enter the URL of your profile picture"
           />
         </div>
@@ -86,7 +86,7 @@ const UserProfile = () => {
           <input
             type="email"
             {...register("email")}
-            className="w-full p-2 border border-gray-300 rounded bg-gray-100"
+            className="w-full p-2 border cursor-not-allowed border-gray-300 rounded bg-gray-100"
             placeholder="Enter your email"
             readOnly
           />
@@ -98,14 +98,14 @@ const UserProfile = () => {
           <input
             type="text"
             {...register("lastLogin")}
-            className="w-full p-2 border border-gray-300 rounded bg-gray-100"
+            className="w-full p-2 border cursor-not-allowed border-gray-300 rounded bg-gray-100"
             placeholder="Last login time"
             readOnly
           />
         </div>
         <button
           type="submit"
-          className="w-full p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition"
+          className="w-full p-2 bg-blue-500 text-white font-bold rounded  hover:bg-blue-600 transition"
         >
           Update Profile
         </button>

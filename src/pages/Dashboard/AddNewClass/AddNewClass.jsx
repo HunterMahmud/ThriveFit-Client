@@ -45,7 +45,7 @@ const AddNewClass = () => {
     ) {
       try {
         // console.log(formData);
-        const { data } = await axiosSecure.post("/classes", formData);
+        const { data } = await axiosSecure.post("/classes", {...formData, totalBooked: 0});
         if (data.insertedId) {
           toast.success("Class added successfully");
           setFormData({

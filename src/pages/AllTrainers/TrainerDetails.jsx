@@ -88,18 +88,17 @@ const TrainerDetails = () => {
         <div className="lg:col-span-1">
           <div className="bg-gray-800 text-white shadow-md rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Available Slots</h3>
-            {/* Todo: slot will be available here */}
-            {/* <div className="grid grid-cols-1 gap-2">
-              {trainer.availableTime.map((slot, index) => (
+            <div className="grid grid-cols-1 gap-2">
+              {trainer?.slots?.map((slot, index) => (
                 <Link
                   key={index}
-                  to={`/trainer/${trainer._id}?slot=${slot.value}`}
+                  to={`/trainer/${trainer._id}?slot=${slot.slotName}`}
                   className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
                 >
-                  {slot.label}
+                  {slot.slotName}
                 </Link>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

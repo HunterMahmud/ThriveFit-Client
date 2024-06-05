@@ -11,8 +11,8 @@ const Payment = () => {
   const navigate = useNavigate();
   const today = new Date();
 
-  const { trainer, selectedSlot, pkgName, price } = location.state || {};
-//   console.log(location.state);
+  const { trainer, selectedSlot, pkgName, price, selectedClasses } = location.state || {};
+  // console.log(location.state);
   const handleConfirm = async () => {
     // console.log({
     //   trainerName: trainer.fullName,
@@ -33,9 +33,9 @@ const Payment = () => {
         trainerId: trainer._id,
         trainerEmail: trainer.email,
         slotName: selectedSlot,
+        selectedClasses,
         pkgName,
         price,
-        classes: trainer.skills,
         userName: user?.displayName,
         userEmail: user.email,
         orderDate: today,

@@ -22,6 +22,8 @@ import AddNewSlot from "../pages/Dashboard/AddNewSlot/AddNewSlot";
 import AddNewForum from './../pages/Dashboard/AddNewForum/AddNewForum';
 import UserProfile from './../pages/Dashboard/UserProfile/UserProfile';
 import ActivityLog from './../pages/Dashboard/ActivityLog/ActivityLog';
+import ForumPage from './../pages/ForumPage/ForumPage';
+import ForumDetails from './../pages/ForumPage/ForumDetails';
 
 
 const router = createBrowserRouter([
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
             {
                 path: '/payment',
                 element: <Payment/>
+            },
+            {
+                path: '/forums',
+                element: <ForumPage/>
+            },
+            {
+                path: '/forum/:id',
+                element: <ForumDetails/>
             },
            
             {

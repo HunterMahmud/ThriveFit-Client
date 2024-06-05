@@ -17,8 +17,7 @@ const Classes = () => {
       return data;
     },
   });
-  // console.log(classes);
-
+  console.log(classes);
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
