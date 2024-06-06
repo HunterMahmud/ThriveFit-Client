@@ -17,7 +17,7 @@ const ManageSlots = () => {
     },
   });
   //   console.log(user.email);
-//   console.log(slotsInfo);
+  console.log(slotsInfo);
 if(isLoading) return <p>loading...</p>
   const deleteSlot = async (slotValue) => {
     try {
@@ -122,7 +122,7 @@ if(isLoading) return <p>loading...</p>
             </tr>
           </thead>
           <tbody>
-            {slotsInfo.payments.map((payment, index) => (
+            {slotsInfo?.payments?.map((payment, index) => (
               <tr key={payment._id} className="bg-gray-100 text-center">
                 <td className="border px-4 py-2">{index + 1}</td>
                 <td className="border px-4 py-2">{payment.userName}</td>

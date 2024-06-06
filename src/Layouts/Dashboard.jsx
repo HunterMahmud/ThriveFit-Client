@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import useRole from "./../hooks/useRole";
+import useAuthProvider from './../hooks/useAuthProvider';
 
 const Dashboard = () => {
+  const {user} = useAuthProvider();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -10,8 +13,14 @@ const Dashboard = () => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
-  const isAdmin = true;
+  const [userRole, roleLoading] = useRole();
+  // console.log(userRole);
 
+  if (roleLoading) {
+    return <div className='flex items-center justify-center h-full'>
+      <span className="loading loading-spinner loading-lg"></span>
+    </div>;
+  }
   return (
     <div className="flex h-full min-h-screen max-w-[100vw]">
       {/* Sidebar */}
@@ -42,7 +51,7 @@ const Dashboard = () => {
         <nav className="flex-grow p-4 bg-gray-200">
           <ul>
             {/* admin only navlinks */}
-            {isAdmin && (
+            {userRole === "admin" && (
               <>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
@@ -96,7 +105,7 @@ const Dashboard = () => {
               </>
             )}
             {/* trainer only navlinks */}
-            {
+            {userRole === "trainer" && (
               <>
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
@@ -116,6 +125,11 @@ const Dashboard = () => {
                 >
                   <NavLink to="/dashboard/addnewslot">Add New Slot</NavLink>
                 </li>
+              </>
+            )}
+            {/* admin and trainer both common route */}
+            {(userRole == "admin" ||
+              userRole == "trainer") && (
                 <li
                   className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
                     isActive("/dashboard/addnewforum")
@@ -125,37 +139,39 @@ const Dashboard = () => {
                 >
                   <NavLink to="/dashboard/addnewforum">Add New Forum</NavLink>
                 </li>
-              </>
-            }
-
+              )}
             {/* member only navlinks */}
-            <li
-              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                isActive("/dashboard/userprofile")
-                  ? "bg-blue-600 text-white"
-                  : ""
-              }`}
-            >
-              <NavLink to="/dashboard/userprofile">User Profile</NavLink>
-            </li>
-            <li
-              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                isActive("/dashboard/activitylog")
-                  ? "bg-blue-600 text-white"
-                  : ""
-              }`}
-            >
-              <NavLink to="/dashboard/activitylog">Activity Log</NavLink>
-            </li>
-            <li
-              className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                isActive("/dashboard/beatrainer")
-                  ? "bg-blue-600 text-white"
-                  : ""
-              }`}
-            >
-              <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
-            </li>
+            {userRole === "member" && (
+              <>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/userprofile")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/userprofile">User Profile</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/activitylog")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/activitylog">Activity Log</NavLink>
+                </li>
+                <li
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                    isActive("/dashboard/beatrainer")
+                      ? "bg-blue-600 text-white"
+                      : ""
+                  }`}
+                >
+                  <NavLink to="/dashboard/beatrainer">Be A Trainer</NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
@@ -179,7 +195,13 @@ const Dashboard = () => {
               />
             </svg>
           </button>
+          <div className="flex justify-between w-full">
           <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
+         <div className="flex justify-center items-center gap-2">
+         <NavLink to='/' className='bg-blue-500 p-2 rounded-md text-white'>Home</NavLink>
+         <button className="bg-red-600 p-2 rounded-md text-white">Logout</button>
+         </div>
+          </div>
         </header>
         <main className="flex-grow bg-white max-w-[100vw] ">
           <Outlet />

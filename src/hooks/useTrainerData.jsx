@@ -1,13 +1,12 @@
 import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-const axiosSecure = useAxiosSecure();
 const useTrainerData = (trainerInfo) => {
-  let trainerQuery = '';
-  if(trainerInfo?.id){
+  const axiosSecure = useAxiosSecure();
+  let trainerQuery = "";
+  if (trainerInfo?.id) {
     trainerQuery = trainerInfo.id;
-  }
-  else if(trainerInfo?.email){
+  } else if (trainerInfo?.email) {
     trainerQuery = trainerInfo.email;
   }
   const {

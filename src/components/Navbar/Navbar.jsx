@@ -1,14 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
 import useAuthProvider from "../../hooks/useAuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useAuthProvider();
-  useEffect(() => {
+  // useEffect(() => {
     
-    document.querySelector("html").setAttribute("class", "dark");
-  }, []);
+  //   // document.querySelector("html").setAttribute("class", "light");
+  // }, []);
 
   const links = (
     <>
@@ -63,7 +62,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="text-black dark:text-white bg-card dark:bg-gray-500">
+    <div className="text-black bg-gray-100">
       <div className="navbar sm:w-[97%] sm:mx-auto max-w-7xl">
         <div className="navbar-start">
           <div className="dropdown">
@@ -85,20 +84,20 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow text-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-gray-100 rounded-box w-52 font-bugrasimo"
+              className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow text-gray-800 bg-gray-100 rounded-box w-52 font-bugrasimo"
             >
               {links}
             </ul>
           </div>
           <Link
             to="/"
-            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-white text-xl italic"
+            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-black text-xl italic"
           >
             Thrive <span className="not-italic text-blue-400">Fit</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal font-bugrasimo px-1 space-x-3">
+          <ul className="menu menu-horizontal  font-bugrasimo px-1 space-x-3">
             {links}
           </ul>
         </div>

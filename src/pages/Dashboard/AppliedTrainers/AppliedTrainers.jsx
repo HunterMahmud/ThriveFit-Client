@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useAllTrainersData from './../../../hooks/useAllTrainersData';
 import ManageModal from './ManageModal';
+import { FaEye } from 'react-icons/fa';
 
 const AppliedTrainers = () => {
   const [trainers, refetch, isLoading] = useAllTrainersData("pending");
@@ -55,7 +56,7 @@ if(isLoading){
                     onClick={() => handleManageClick(trainer)}
                     className="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
                   >
-                    Manage
+                    <FaEye/>
                   </button>
                 </td>
               </tr>

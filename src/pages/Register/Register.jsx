@@ -34,12 +34,14 @@ const Register = () => {
             const userInfo = {
               name: data.name,
               email: data.email,
+              profilePicture: data.photoURL
             };
             axiosPublic.post("/user", userInfo)
-            .then(res=> {
-              if(res.data?.insertedId){
+            .then(result=> {
+              if(result.data?.insertedId){
                 reset();
                 toast.success("Register successful.");
+                // console.log(res.user);
                 setUser(res.user);
                 navigate("/");
               }

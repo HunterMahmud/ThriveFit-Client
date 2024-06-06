@@ -2,9 +2,9 @@
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuthProvider from './useAuthProvider';
-
-const axiosSecure = useAxiosSecure();
+//todo: have to use axios public
 const useAllTrainersData = (status) => {
+  const axiosSecure = useAxiosSecure();
     // console.log(status);
     const {user} = useAuthProvider()
     const { data: trainers = [], refetch, isLoading } = useQuery({

@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import useAuthProvider from '../../../hooks/useAuthProvider';
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import useRole from './../../../hooks/useRole';
 
 const AddNewForum = () => {
+  const [userRole,roleLoading ] = useRole();
     const axiosSecure = useAxiosSecure()
   const { user } = useAuthProvider();
   const { register, handleSubmit, reset } = useForm();
@@ -17,11 +19,11 @@ const AddNewForum = () => {
         ...postInfo,
         author: user.displayName,
         email: user.email,
-        role: user?.role || 'admin', // todo: have to implement the role
+        role: userRole, // todo: have to implement the role
         upvote: 0,
         downvote:0
       };
-console.log(postData);
+// console.log(postData);
       const {data} = await axiosSecure.post('/forums', postData);
       if (data?.insertedId) {
         toast.success('Forum post added successfully');
@@ -32,6 +34,7 @@ console.log(postData);
       toast.error('Failed to add forum post');
     }
   };
+  if(roleLoading) return <p>loading...</p>
 
   return (
     <div className="max-w-2xl mx-auto p-4 bg-white shadow-md rounded-lg my-7">

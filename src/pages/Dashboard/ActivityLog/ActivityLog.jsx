@@ -7,17 +7,33 @@ const ActivityLog = () => {
   const { user } = useAuthProvider();
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [trainer, isLoading] = useTrainerData({ email: user?.email });
+  const [trainer, isLoading, error] = useTrainerData({ email: user?.email });
 
   const handleViewFeedback = (trainer) => {
     setSelectedTrainer(trainer);
     setIsModalOpen(true);
   };
-
+  // console.log(error);
+// console.log(trainer.length);
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <div className='flex items-center justify-center h-full'>
+      <span className="loading loading-spinner loading-lg"></span>
+    </div>;
   }
-
+if(error ){
+  return (
+    <div className='flex items-center justify-center h-full'>
+      <h1 className='text-2xl text-blue-600 capitalize'>Error happened when geting data.</h1>
+    </div>
+  )
+}
+if(!trainer || trainer.length===0){
+  return (
+    <div className='flex items-center justify-center h-full'>
+      <h1 className='text-2xl text-blue-600 capitalize'>You are not applyed for trainer yet.</h1>
+    </div>
+  )
+}
   return (
     <div className="w-full mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">My Activity Log</h1>

@@ -41,14 +41,19 @@ const Payment = () => {
         orderDate: today,
       });
       if (response.data?.insertedId) {
+        // console.log(selectedClasses);
+        // when someone payment for the selected slot then inside the selected slot
+        // all the classes of selectedClasses value of totalBooked increased by one in db
+        const {data} = await axiosSecure.put('classes/update-bookings', {selectedClasses});
+        // console.log(data);
+
         // Handle success (e.g., navigate to a success page, show a success message)
         toast.success("Payment successful!");
-        //TODO: navigate user to the all the payment page he/she occured
         navigate("/alltrainers"); // Replace with your success page route
       }
     } catch (error) {
       toast.error("Error processing payment");
-      // Handle error (e.g., show an error message)
+      console.log(error);
     }
   };
 

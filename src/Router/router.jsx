@@ -24,6 +24,7 @@ import UserProfile from './../pages/Dashboard/UserProfile/UserProfile';
 import ActivityLog from './../pages/Dashboard/ActivityLog/ActivityLog';
 import ForumPage from './../pages/ForumPage/ForumPage';
 import ForumDetails from './../pages/ForumPage/ForumDetails';
+import WelcomeDashboard from "../pages/Dashboard/WelcomeDashboard";
 
 
 const router = createBrowserRouter([
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute> <Dashboard/> </PrivateRoute>,
         children:[
+            {
+                index: true,
+                element: <WelcomeDashboard/>
+            },
             //admin related paths
             {
                 path:'allnewsletter',

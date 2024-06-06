@@ -41,11 +41,11 @@ const AddNewClass = () => {
       formData.classPhoto &&
       formData.description &&
       formData.difficulty &&
-      formData.benefits.length > 0
+      formData.benefits?.length > 0
     ) {
       try {
         // console.log(formData);
-        const { data } = await axiosSecure.post("/classes", {...formData, totalBooked: 0});
+        const { data } = await axiosSecure.post("/classes", {...formData,   totalBooked: 0});
         if (data.insertedId) {
           toast.success("Class added successfully");
           setFormData({
