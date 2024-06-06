@@ -56,6 +56,7 @@ const Register = () => {
         if (err?.customData?._tokenResponse?.error?.message == "EMAIL_EXISTS") {
           toast.error("Email already exists.");
         } else {
+          console.log(err);
           toast.error("Register unsuccessful.");
         }
       });
@@ -116,7 +117,7 @@ const Register = () => {
                   message: "URL must be valid and must include http or https",
                 },
               })}
-              type="text"
+              type="url"
               name="photoURL"
               placeholder="Photo URL"
               className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
@@ -137,6 +138,10 @@ const Register = () => {
                 required: {
                   value: true,
                   message: "This field is required.",
+                },
+                pattern: {
+                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
+                  message: "Email must be valid",
                 },
               })}
               type="email"

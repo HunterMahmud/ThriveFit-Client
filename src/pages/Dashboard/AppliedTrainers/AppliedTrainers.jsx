@@ -18,9 +18,14 @@ const AppliedTrainers = () => {
     setSelectedTrainer(null);
     refetch();
   };
-
+//todo:loading
 if(isLoading){
   return <p>loading...</p>
+}
+//todo:loading
+if(!trainers || trainers.length===0)
+{
+  return <p> no tainer found</p>
 }
   return (
     <div className="w-full mx-auto p-4">
