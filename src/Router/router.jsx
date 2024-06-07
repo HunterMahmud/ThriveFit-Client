@@ -26,6 +26,10 @@ import ForumPage from './../pages/ForumPage/ForumPage';
 import ForumDetails from './../pages/ForumPage/ForumDetails';
 import WelcomeDashboard from "../pages/Dashboard/WelcomeDashboard";
 import RecommendedClasses from "../pages/Dashboard/RecommendedClasses/RecommendedClasses";
+import AdminOrTrainerRoute from "./AdminOrTrainerRoute";
+import TrainerRoute from './TrainerRoute';
+import AdminRoute from "./AdminRoute";
+import MemberRoute from './MemberRoute';
 
 
 const router = createBrowserRouter([
@@ -56,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/payment',
-                element: <Payment/>
+                element: <PrivateRoute><Payment/></PrivateRoute>
             },
             {
                 path: '/forums',
@@ -83,61 +87,64 @@ const router = createBrowserRouter([
         children:[
             {
                 index: true,
-                element: <WelcomeDashboard/>
+                element: <PrivateRoute><WelcomeDashboard/></PrivateRoute>
             },
+            
             //admin related paths
             {
                 path:'allnewsletter',
-                element: <AllNewsLetter/>
+                element: <AdminRoute><AllNewsLetter/></AdminRoute>
             },
             {
                 path: 'addnewclass',
-                element: <AddNewClass/>
+                element: <AdminRoute><AddNewClass/></AdminRoute>
             },
             {
                 path: 'alltrainers',
-                element: <DashboardAllTrainers/>
+                element: <AdminRoute><DashboardAllTrainers/></AdminRoute>
             },
             {
                 path: 'balance',
-                element: <Balance/>
+                element: <AdminRoute><Balance/></AdminRoute>
             },
             {
                 path: 'appliedtrainers',
-                element: <AppliedTrainers/>
+                element: <AdminRoute><AppliedTrainers/></AdminRoute>
             },
 
             /// trainer related paths
             {
                 path: 'manageslot',
-                element: <ManageSlots/>
+                element: <TrainerRoute><ManageSlots/></TrainerRoute>
             },
             {
                 path: 'addnewslot',
-                element: <AddNewSlot/>
+                element: <TrainerRoute><AddNewSlot/></TrainerRoute>
             },
+
+            ///admin and trainer common route
             {
                 path: 'addnewforum',
-                element: <AddNewForum/>
+                element: <AdminOrTrainerRoute><AddNewForum/></AdminOrTrainerRoute>
             },
 
 
             /// member related paths
             {
                 path:'beatrainer',
-                element: <BeATrainer/>
+                element: <MemberRoute><BeATrainer/></MemberRoute>
             },
             {
                 path:'userprofile',
-                element: <UserProfile/>
+                element: <MemberRoute><UserProfile/></MemberRoute>
             },
             {
                 path:'activitylog',
-                element: <ActivityLog/>
+                element: <MemberRoute><ActivityLog/></MemberRoute>
             },
             {
                 path: 'recommendedclasses',
-                element: <RecommendedClasses/>
+                element: <MemberRoute><RecommendedClasses/></MemberRoute>
             }
         ]
     }

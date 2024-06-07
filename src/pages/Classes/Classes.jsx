@@ -43,7 +43,7 @@ const Classes = () => {
     setSearchQuery(searchTerm);
     setCurrentPage(1); // Reset to first page on new search
   };
-//todo:loading
+
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
@@ -51,7 +51,13 @@ const Classes = () => {
       </div>
     );
   }
-  if (error) return <div>Error loading classes</div>;
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading classes data...
+      </div>
+    );
+  }
 
   return (
     <div className="container text-gray-900 max-w-7xl mx-auto p-4">

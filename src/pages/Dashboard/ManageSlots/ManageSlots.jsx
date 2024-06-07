@@ -53,10 +53,19 @@ const ManageSlots = () => {
     setSelectedSlot(null);
   };
 
-  //todo:loading
-  if (isLoading) return <p>loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   if (slotsInfo?.slots.length === 0) {
-    return <p>no slot found please add some slot</p>;
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        no slot found please add some slot...
+      </div>
+    );
   }
   return (
     <div className="w-full mx-auto p-4">
@@ -147,7 +156,6 @@ const ManageSlots = () => {
             </div>
           </>
         ) : (
-          
           <div className="w-full overflow-x-auto">
             <table className="w-full text-gray-800 bg-white">
               <thead className="bg-gray-200">

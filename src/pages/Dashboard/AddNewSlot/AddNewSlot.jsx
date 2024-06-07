@@ -70,8 +70,8 @@ const AddNewSlot = () => {
         slotInfo
       );
       // console.log(data);
-      if(data.message){
-        toast.success("Slot created")
+      if (data.message) {
+        toast.success("Slot created");
         reset();
       }
     } catch (error) {
@@ -79,12 +79,29 @@ const AddNewSlot = () => {
       toast.error("Can't add the slot");
     }
   };
-  //todo:loading
+
   if (isLoading || isClassLoading) {
-    return <p>loading...</p>;
+    return (
+      <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
-  if(error) return <p>error loading trainer data...</p>
-  if(!trainer) return <div className="flex items-center justify-center h-full text-red-500 text-lg">You are not a trainer.</div>
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading trainer data...
+      </div>
+    );
+  }
+
+  if (!trainer) {
+    return (
+      <div className="flex items-center justify-center h-full text-red-500 text-lg">
+        You are not a trainer.
+      </div>
+    );
+  }
   return (
     <div className="max-w-5xl mx-auto p-4 bg-white shadow-md rounded-lg my-7">
       <div className="max-w-4xl mx-auto p-8 bg-white shadow-md rounded-lg">

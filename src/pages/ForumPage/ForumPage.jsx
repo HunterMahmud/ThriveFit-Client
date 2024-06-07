@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAuthProvider from "../../hooks/useAuthProvider";
-import useAxiosSecure from './../../hooks/useAxiosSecure';
-import { FaUserShield } from 'react-icons/fa';
-import { FaChalkboardTeacher } from 'react-icons/fa';
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { FaUserShield } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const ForumPage = () => {
   const { user } = useAuthProvider();
@@ -31,13 +31,11 @@ const ForumPage = () => {
     }
 
     const endpoint =
-      type === "upvote"
-        ? `/posts/${id}/upvote`
-        : `/posts/${id}/downvote`;
-     
+      type === "upvote" ? `/posts/${id}/upvote` : `/posts/${id}/downvote`;
+
     try {
       await axiosSecure.patch(endpoint);
-      toast.success("Voted")
+      toast.success("Voted");
       queryClient.invalidateQueries(["posts", currentPage]);
     } catch (error) {
       toast.error("Error while voting.");
@@ -51,23 +49,38 @@ const ForumPage = () => {
 
   const renderContentPreview = (content) => {
     const maxLength = 50;
-    return content.length > maxLength ? `${content.slice(0, maxLength)}...` : content;
+    return content.length > maxLength
+      ? `${content.slice(0, maxLength)}...`
+      : content;
   };
-///todo:loading
+
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
 
   if (isError) {
-    return <p>Error loading posts.</p>;
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading post data...
+      </div>
+    );
   }
 
   return (
     <div className="max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900 my-10">Forum</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900 my-10">
+        Forum
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data?.posts?.map((post) => (
-          <div key={post._id} className="post bg-white text-gray-800 p-4 border rounded-md shadow-lg">
+          <div
+            key={post._id}
+            className="post bg-white text-gray-800 p-4 border rounded-md shadow-lg"
+          >
             <Link to={`/forum/${post._id}`}>
               <img
                 src={post.imageUrl}
@@ -76,7 +89,9 @@ const ForumPage = () => {
               />
               <h2 className="text-xl font-bold capitalize">{post.title}</h2>
             </Link>
-            <p className="font-semibold flex items-center">Author: {post.author} {post.role === "admin" && (
+            <p className="font-semibold flex items-center">
+              Author: {post.author}{" "}
+              {post.role === "admin" && (
                 <span className="ml-2 text-yellow-400">
                   <FaUserShield className="text-xl" title="Admin" />
                 </span>
@@ -85,7 +100,8 @@ const ForumPage = () => {
                 <span className="ml-2 text-green-500">
                   <FaChalkboardTeacher className="text-xl" title="Trainer" />
                 </span>
-              )}</p>
+              )}
+            </p>
             <p>{renderContentPreview(post.content)}</p>
             <Link to={`/forum/${post._id}`} className="text-blue-600">
               Read More

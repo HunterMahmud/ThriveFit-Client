@@ -15,7 +15,7 @@ const ActivityLog = () => {
   };
   // console.log(error);
 // console.log(trainer.length);
-//todo:loading
+
   if (isLoading) {
     return <div className='flex items-center justify-center h-full'>
       <span className="loading loading-spinner loading-lg"></span>
@@ -24,14 +24,14 @@ const ActivityLog = () => {
 if(error ){
   return (
     <div className='flex items-center justify-center h-full'>
-      <h1 className='text-2xl text-blue-600 capitalize'>Error happened when geting data.</h1>
+      <h1 className='text-2xl text-gray-800 capitalize'>Error happened when geting data.</h1>
     </div>
   )
 }
 if(!trainer || trainer.length===0){
   return (
     <div className='flex items-center justify-center h-full'>
-      <h1 className='text-2xl text-blue-600 capitalize'>You are not applyed for trainer yet.</h1>
+      <h1 className='text-2xl text-gray-800 capitalize'>You are not applyed for trainer yet.</h1>
     </div>
   )
 }

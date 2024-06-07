@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import useRole from "./../hooks/useRole";
 import { Navigate } from "react-router-dom";
 
-const AdminRoute = ({ children }) => {
+const AdminOrTrainerRoute = ({ children }) => {
   const { user, loading } = useAuthProvider();
   const location = useLocation();
   const [userRole, roleLoading] = useRole();
@@ -15,10 +15,10 @@ const AdminRoute = ({ children }) => {
       </div>
     );
   }
-  if (user && userRole === "admin") {
+  if (user && (userRole === "admin" || userRole ==='trainer')) {
     return children;
   }
   return <Navigate to="/login" state={location.pathname} replace={true} />;
 };
 
-export default AdminRoute;
+export default AdminOrTrainerRoute;

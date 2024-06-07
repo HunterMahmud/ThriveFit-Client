@@ -19,7 +19,7 @@ const RecommendedClasses = () => {
     keepPreviousData: true,
   });
   const { classes } = classData;
-//todo:loading and error
+
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
@@ -27,15 +27,20 @@ const RecommendedClasses = () => {
       </div>
     );
   }
-//todo:loading
+
   if (error) {
-    return <div>Error loading recommended classes</div>;
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading recommended classes...
+      </div>
+    );
   }
- 
 
   return (
     <div className="container text-gray-100 max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center">Classes You May Like</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        Classes You May Like
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classes.map((classItem) => (
           <div
