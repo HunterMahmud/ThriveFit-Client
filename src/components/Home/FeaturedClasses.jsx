@@ -65,7 +65,10 @@ const FeaturedClasses = () => {
                     className="w-full h-56 object-cover mt-2 rounded-lg"
                   />
                   <p className="mt-2 text-gray-800">
-                    <strong>Description:</strong> {classItem.description}
+                    <strong>Description:</strong>{" "}
+                    {classItem?.description?.length > 20
+                      ? classItem?.description?.slice(0, 100) + "..."
+                      : classItem?.description}
                   </p>
                   <p className="mt-2 text-gray-800">
                     <strong>Total Bookings:</strong> {classItem.totalBooked}

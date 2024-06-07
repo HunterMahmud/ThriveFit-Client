@@ -83,7 +83,7 @@ const ForumPage = () => {
           >
             <Link to={`/forum/${post._id}`}>
               <img
-                src={post.imageUrl}
+                src={post.imageUrl || "https://i.ibb.co/fFYknQL/image-not-found.jpg"}
                 alt={post.title}
                 className="my-2 w-full h-48 object-cover rounded"
               />

@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const TrainerCard = ({ trainer }) => {
+  // console.log(trainer);
   return (
     <div className="max-w-sm rounded overflow-hidden text-gray-900 shadow-lg bg-whtie p-4">
       <img
@@ -19,20 +20,16 @@ const TrainerCard = ({ trainer }) => {
         <div className="mt-4">
           <h3 className="text-lg font-bold">Available Slots:</h3>
           {/* ToDO: available slot will be here */}
-          {/* <ul className="list-disc list-inside">
-            {trainer.availableTime.map((slot, index) => (
-              <li key={index}>{slot.label}</li>
-            ))}
-          </ul> */}
-        </div>
-        <div className="mt-4">
-          <h3 className="text-lg font-bold">Skills:</h3>
           <ul className="list-disc list-inside">
-            {trainer?.skills?.map((skill, index) => (
-              <li key={index}>{skill.label}</li>
+            {trainer?.slots?.slice(0,3).map((slot, index) => (
+              <li key={index}>{slot.slotName}</li>
             ))}
+            {
+              trainer?.slots?.length > 3 &&<li>....more (See Details)</li>
+            }
           </ul>
         </div>
+       
         <div className="flex items-center space-x-4 mt-2">
           <h3 className="text-lg font-bold">Socials links:</h3>
           <a href={trainer.facebook} target="_blank" rel="noopener noreferrer">

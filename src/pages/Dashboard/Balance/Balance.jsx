@@ -109,13 +109,13 @@ const Balance = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow-lg rounded-lg p-6 m-4 w-full">
+      <div className="bg-white border shadow-lg rounded-lg p-6  w-full">
         <h2 className="text-2xl font-bold text-gray-700 mb-2">
           Subscribers vs Paid Members
         </h2>
-        <div className="w-full h-64">
+        <div className="w-full h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart width={900} height={500}>
+            <PieChart>
               <Pie
                 data={data}
                 cx="50%"

@@ -79,7 +79,7 @@ const Classes = () => {
           </button>
         </form>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-4">
         {classes.map((classItem) => (
           <div
             key={classItem._id}
@@ -103,6 +103,9 @@ const Classes = () => {
             </p>
             <p className="mt-2 text-gray-800">
               <strong>Difficulty:</strong> {classItem.difficulty}
+            </p>
+            <p className="mt-2 text-gray-800">
+              <strong>Benefits:</strong>
             </p>
             <ul className="mt-2 list-disc pl-5">
               {classItem?.benefits?.map((benefit, index) => (

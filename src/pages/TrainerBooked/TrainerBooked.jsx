@@ -41,7 +41,7 @@ const TrainerBooked = () => {
   const [trainer, isLoading] = useTrainerData({ id: trainerId });
   // console.log(trainer.slots);
   const slotInfo = trainer?.slots?.find((slot) => slot.slotName == selectedSlot);
-  console.log(slotInfo);
+  // console.log(slotInfo);
   // console.log(selectedSlot);
   const handleJoinNow = () => {
     const pkg = packages.find((pkg) => pkg.name === selectedPackage);
@@ -66,10 +66,17 @@ const TrainerBooked = () => {
       </div>
     );
   }
+  if(!trainer){
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading trainer data...
+      </div>
+    );
+  }
   return (
     <div className="container mx-auto max-w-7xl p-4 my-10">
       {trainer ? (
-        <div className="border rounded-lg p-4 shadow-md text-white">
+        <div className="border rounded-lg p-4 shadow-md text-gray-900">
           <h1 className="text-4xl font-bold mb-4 text-center">
             Trainer Booking Details
           </h1>

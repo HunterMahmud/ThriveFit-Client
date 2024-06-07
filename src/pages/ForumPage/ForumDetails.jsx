@@ -42,19 +42,29 @@ const ForumDetails = () => {
       toast.error("Error while voting.");
     }
   };
-
-  if (!post || isLoading) {
-    return <p>Loading post...</p>;
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
 
+  if (!post) {
+    return (
+      <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        Error loading featured classes...
+      </div>
+    );
+  }
   return (
-    <div className="max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 capitalize text-center text-gray-100 ">
+    <div className="max-w-7xl mx-auto my-10 p-4  text-gray-900">
+      <h1 className="text-3xl font-bold mb-4 capitalize text-center text-gray-900 ">
         {post.title}
       </h1>
-      <div className="post bg-gray-200 text-gray-100 p-4 rounded shadow-md">
+      <div className="post bg-white border text-gray-900 p-4 rounded shadow-md">
         <img
-          src={post.imageUrl}
+          src={post.imageUrl || "https://i.ibb.co/fFYknQL/image-not-found.jpg"}
           alt={post.title}
           className="my-2 w-full h-96 object-cover rounded"
         />

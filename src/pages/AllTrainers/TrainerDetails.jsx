@@ -24,10 +24,13 @@ const TrainerDetails = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 text-gray-900 py-8">
+      <h1 className="text-4xl font-bold mb-4 text-center my-6">
+        Trainer Details Page
+      </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <div className="lg:col-span-2">
-          <div className="bg-gray-100 text-black shadow-md rounded-lg p-6">
+          <div className="bg-white border text-black shadow-md rounded-lg p-6">
             <div className="flex items-center mb-6">
               <img
                 src={
@@ -39,7 +42,7 @@ const TrainerDetails = () => {
               />
               <div>
                 <h2 className="text-2xl font-bold">{trainer.fullName}</h2>
-                <p className="text-gray-200">
+                <p className="text-gray-800">
                   {trainer?.yearsOfExperience} years of experience
                 </p>
               </div>
@@ -97,23 +100,27 @@ const TrainerDetails = () => {
           </div>
         </div>
         <div className="lg:col-span-1">
-          <div className="bg-gray-100 text-black shadow-md rounded-lg p-6">
+          <div className="bg-white border text-black shadow-md rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Available Slots</h3>
-            <div className="grid grid-cols-1 gap-2">
-              {trainer?.slots?.map((slot, index) => (
-                <Link
-                  key={index}
-                  to={`/trainer/${trainer._id}?slot=${slot.slotName}`}
-                  className="bg-blue-500 text-balck font-semibold py-2 px-4 rounded hover:bg-blue-700"
-                >
-                  {slot.slotName}
-                </Link>
-              ))}
-            </div>
+            {trainer?.slots?.length > 0 ? (
+              <div className="grid grid-cols-1 gap-2">
+                {trainer?.slots?.map((slot, index) => (
+                  <Link
+                    key={index}
+                    to={`/trainer/${trainer._id}?slot=${slot.slotName}`}
+                    className="bg-blue-500 text-balck font-semibold py-2 px-4 rounded hover:bg-blue-700"
+                  >
+                    {slot.slotName}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p>Trainer has no slot.</p>
+            )}
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 text-black shadow-md rounded-lg p-6 mt-5 max-w-7xl mx-auto">
+      <div className="bg-white border text-black shadow-md rounded-lg p-6 mt-5 max-w-7xl mx-auto">
         <h3 className="text-xl font-bold mb-4">About Me:</h3>
         {trainer?.aboutMe ? (
           <p>{trainer.aboutMe}</p>

@@ -58,43 +58,43 @@ const Payment = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 text-black">
+    <div className="container mx-auto p-4 my-10 text-black">
       <div className="border rounded-lg p-4 shadow-md overflow-x-auto">
-        <h1 className="text-3xl font-bold mb-4">Payment Details</h1>
-        <table className="table-auto w-full bg-gray-100 text-black">
+        <h1 className="text-3xl font-bold mb-4 text-center">Payment Details</h1>
+        <table className="table-auto w-full bg-white text-black">
           <tbody>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">
+              <td className="px-4 py-2 font-medium text-gray-800">
                 Trainer Name
               </td>
               <td className="px-4 py-2">{trainer.fullName}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Slot Name</td>
+              <td className="px-4 py-2 font-medium text-gray-800">Slot Name</td>
               <td className="px-4 py-2">{selectedSlot}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">
+              <td className="px-4 py-2 font-medium text-gray-800">
                 Package Name
               </td>
               <td className="px-4 py-2">{pkgName}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Price</td>
+              <td className="px-4 py-2 font-medium text-gray-800">Price</td>
               <td className="px-4 py-2">${price}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">Your Name</td>
+              <td className="px-4 py-2 font-medium text-gray-800">Your Name</td>
               <td className="px-4 py-2">{user.displayName}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">
+              <td className="px-4 py-2 font-medium text-gray-800">
                 Your Email
               </td>
               <td className="px-4 py-2">{user.email}</td>
             </tr>
             <tr className="border-b border-gray-700">
-              <td className="px-4 py-2 font-medium text-gray-100">
+              <td className="px-4 py-2 font-medium text-gray-800">
                 Order Date
               </td>
               <td className="px-4 py-2">{today.toLocaleDateString()}</td>
