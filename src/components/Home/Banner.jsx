@@ -18,24 +18,24 @@ const Banner = () => {
   return (
     <div className="relative">
       <div
-        data-aos="fade-right"
-        className="absolute top-[40%] left-12 md:left-20 w-[70%]  z-10"
+        data-aos="fade-up"
+        className="absolute  top-[30%] sm:top-[40%] left-12 md:left-20 w-[70%]  z-10"
       >
         <div className=" h-[40%] max-w-[900px] text-white p-5">
-          <h1 className="text-3xl sm:text-5xl dark:text-gray-200 uppercase font-Bebas font-extrabold">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl  uppercase font-Bebas font-extrabold">
             {" "}
-            Keep Your Body <br /> Fit {'&'} <span className="text-red-500">
+            Keep Your Body <br /> Fit {'&'} <span className="text-blue-500">
              Strong
             </span>
           </h1>
-          <p className="max-w-[500px] mt-5"> Achieve peak fitness with expert training, personalized workouts, and a supportive community for all fitness levels. Join us today!</p>
+          <p className="max-w-[500px] mt-5 hidden sm:block"> Achieve peak fitness with expert training, personalized workouts, and a supportive community for all fitness levels. Join us today!</p>
           <div className="flex gap-3">
            
             <Link
-              to="/all-books"
+              to="/classes"
               className=" mt-3 p-2 border font-bugrasimo border-blue-500 bg-violet-500 font-bold rounded-md text-lg"
             >
-               Join Now!
+               Find Now!
             </Link>
           </div>
         </div>

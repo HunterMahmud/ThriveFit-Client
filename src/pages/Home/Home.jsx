@@ -17,7 +17,7 @@ const Home = () => {
         <Features />
       </MaxWidthProvider>
       <AboutUs />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <FeaturedClasses />
       <LatestPosts/>
       <TeamSection/>

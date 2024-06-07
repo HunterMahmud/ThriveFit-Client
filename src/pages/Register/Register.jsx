@@ -70,16 +70,16 @@ const Register = () => {
       <ScrollRestoration />
       <div
         data-aos="zoom-in"
-        className="w-full mb-9 border border-gray-200 dark:border-gray-800 border-gray-100/25 max-w-md mx-auto mt-12 p-8 space-y-3 rounded-xl bg-white dark:bg-gray-900 text-gray-900"
+        className="w-full mb-9 border border-gray-200  border-gray-100/25 max-w-md mx-auto mt-12 p-8 space-y-3 rounded-xl bg-white  text-gray-900"
       >
-        <h1 className="text-2xl font-bold text-center text-black dark:text-gray-100 font-bugrasimo">
+        <h1 className="text-2xl font-bold text-center text-black  font-bugrasimo">
           Register Now!
         </h1>
         <form onSubmit={handleSubmit(onSubmitRegister)} className="space-y-6">
           <div className="space-y-1 text-sm">
             <label
               htmlFor="username"
-              className="block text-gray-900 dark:text-gray-100"
+              className="block text-gray-900 "
             >
               Name
             </label>
@@ -93,7 +93,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Name"
-              className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
+              className="w-full placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
             />
             {errors?.name?.message && (
               <span className="text-red-500">{errors.name.message}</span>
@@ -102,7 +102,7 @@ const Register = () => {
           <div className="space-y-1 text-sm">
             <label
               htmlFor="username"
-              className="block text-gray-900 dark:text-gray-100"
+              className="block text-gray-900 "
             >
               Photo URL
             </label>
@@ -120,7 +120,7 @@ const Register = () => {
               type="url"
               name="photoURL"
               placeholder="Photo URL"
-              className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
+              className="w-full placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
             />
             {errors?.photoURL?.message && (
               <span className="text-red-500">{errors.photoURL.message}</span>
@@ -129,7 +129,7 @@ const Register = () => {
           <div className="space-y-1 text-sm">
             <label
               htmlFor="username"
-              className="block text-gray-900 dark:text-gray-100"
+              className="block text-gray-900 "
             >
               Email
             </label>
@@ -147,7 +147,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Email"
-              className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
+              className="w-full  placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
             />
             {errors?.email?.message && (
               <span className="text-red-500">{errors.email.message}</span>
@@ -156,7 +156,7 @@ const Register = () => {
           <div className="space-y-1 text-sm">
             <label
               htmlFor="password"
-              className="block text-gray-900 dark:text-gray-100"
+              className="block text-gray-900 "
             >
               Password
             </label>
@@ -189,10 +189,10 @@ const Register = () => {
                 type={showPass ? "text" : "password"}
                 name="password"
                 placeholder="Password"
-                className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
+                className="w-full placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-400 bg-transparent appearance-none"
               />
               <span
-                className="absolute top-4 right-3 cursor-pointer dark:text-gray-200 p-1"
+                className="absolute top-4 right-3 cursor-pointer  p-1"
                 onClick={() => {
                   setShowPass(!showPass);
                 }}
@@ -214,11 +214,11 @@ const Register = () => {
             </button>
           </div>
         </form>
-        <p className="text-sm text-center sm:px-6 text-gray-800 dark:text-gray-200">
+        <p className="text-sm text-center sm:px-6 text-gray-800">
           Have an account?
           <Link
             to="/login"
-            className="underline font-bold text-gray-800 dark:text-gray-50 ml-2"
+            className="underline font-bold text-gray-800  ml-2"
           >
             Login
           </Link>

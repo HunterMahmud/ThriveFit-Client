@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const TrainerCard = ({ trainer }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden text-white shadow-lg bg-gray-800 p-4">
+    <div className="max-w-sm rounded overflow-hidden text-gray-900 shadow-lg bg-whtie p-4">
       <img
         className="w-full h-[270px] object-cover"
         src={trainer.profileImage}
@@ -12,7 +12,7 @@ const TrainerCard = ({ trainer }) => {
       />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{trainer.fullName}</div>
-        <p className="text-gray-100 text-base">
+        <p className="text-gray-800 ">
           Years of Experience: {trainer.yearsOfExperience}
         </p>
        

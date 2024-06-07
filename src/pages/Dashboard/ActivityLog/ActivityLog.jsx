@@ -15,6 +15,7 @@ const ActivityLog = () => {
   };
   // console.log(error);
 // console.log(trainer.length);
+//todo:loading
   if (isLoading) {
     return <div className='flex items-center justify-center h-full'>
       <span className="loading loading-spinner loading-lg"></span>
@@ -54,7 +55,7 @@ if(!trainer || trainer.length===0){
               <td className="border px-4 py-2 text-center">{trainer.fullName}</td>
               <td className="border px-4 py-2 text-center">{trainer.email}</td>
               <td className={`border px-4 py-2 text-center ${trainer?.status == 'rejected' && 'text-red-500' || trainer?.status == 'success' && 'text-green-500' } `}>
-                {trainer.status.toUpperCase()}
+                {trainer?.status?.toUpperCase()}
               </td>
               {trainer?.status === 'rejected' && (
                 <td className="border px-4 py-2 text-center">

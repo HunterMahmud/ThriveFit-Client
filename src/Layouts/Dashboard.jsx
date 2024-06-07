@@ -2,15 +2,26 @@ import React, { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useRole from "./../hooks/useRole";
 import useAuthProvider from "./../hooks/useAuthProvider";
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
-  const { user } = useAuthProvider();
+  const {  logOut } = useAuthProvider();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   const location = useLocation();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logged out.");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Logout error happened.");
+      });
+  };
 
   const isActive = (path) => location.pathname === path;
   const [userRole, roleLoading] = useRole();
@@ -243,7 +254,7 @@ const Dashboard = () => {
               <NavLink to="/" className="bg-blue-500 p-2 rounded-md text-white">
                 Home
               </NavLink>
-              <button className="bg-red-600 p-2 rounded-md text-white">
+              <button onClick={handleLogOut} className="bg-red-600 p-2 rounded-md text-white">
                 Logout
               </button>
             </div>

@@ -34,6 +34,7 @@ const AddNewForum = () => {
       toast.error('Failed to add forum post');
     }
   };
+  //todo:loading
   if(roleLoading) return <p>loading...</p>
 
   return (

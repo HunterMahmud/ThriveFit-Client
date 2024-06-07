@@ -116,7 +116,7 @@ const TrainerBooked = () => {
                   className={`border-[2px] rounded-lg p-4 shadow-md cursor-pointer  ${
                     selectedPackage === pkg.name
                       ? " border border-violet-400 bg-violet-400 text-black"
-                      : "bg-gray-800"
+                      : "bg-gray-100"
                   }`}
                   onClick={() => setSelectedPackage(pkg.name)}
                 >

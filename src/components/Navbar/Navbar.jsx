@@ -5,7 +5,7 @@ import useAuthProvider from "../../hooks/useAuthProvider";
 const Navbar = () => {
   const { user, logOut } = useAuthProvider();
   // useEffect(() => {
-    
+
   //   // document.querySelector("html").setAttribute("class", "light");
   // }, []);
 
@@ -42,12 +42,10 @@ const Navbar = () => {
               Dashboard
             </NavLink>
           </li>
-         
-         
         </>
-      ):
-      (<>
-      </>)}
+      ) : (
+        <></>
+      )}
     </>
   );
   const handleLogOut = () => {
@@ -91,7 +89,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-black text-xl italic"
+            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-black text-2xl italic"
           >
             Thrive <span className="not-italic text-blue-400">Fit</span>
           </Link>
@@ -106,13 +104,12 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             {user ? (
               <>
-                
                 <img
                   // style={{ display: window.innerWidth <= 541 ? 'block' : 'none' }}
                   referrerPolicy="no-referrer"
                   alt={user?.displayName ? user.displayName : "Name not found"}
                   title={user?.displayName ? user.displayName : "Name not set"}
-                  className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 dark:ring-offset-gray-100 hidden sm:block"
+                  className="w-12 h-12 rounded-full ring-2 ring-offset-4  hidden sm:block"
                   src={
                     user?.photoURL
                       ? user.photoURL
@@ -122,19 +119,18 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogOut}
-                  className="btn font-bugrasimo btn-secondary bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-[#f04970] sm:text-lg text-white"
+                  className="p-2 rounded-md font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-[#f04970] sm:text-lg text-white"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <Link to="/login">
-                <button className="btn btn-primary bg-violet-700 text-xl text-white font-bugrasimo">
+                <button className="p-2 rounded-md font-bold bg-violet-700 text-xl text-white ">
                   Login
                 </button>
               </Link>
             )}
-            
           </div>
         </div>
       </div>

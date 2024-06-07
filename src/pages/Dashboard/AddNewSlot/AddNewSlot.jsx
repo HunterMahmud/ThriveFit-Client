@@ -3,7 +3,6 @@ import { useForm, Controller } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuthProvider from "../../../hooks/useAuthProvider";
 import useTrainerData from "./../../../hooks/useTrainerData";
-import CreatableSelect from "react-select/creatable";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
@@ -80,6 +79,7 @@ const AddNewSlot = () => {
       toast.error("Can't add the slot");
     }
   };
+  //todo:loading
   if (isLoading || isClassLoading) {
     return <p>loading...</p>;
   }

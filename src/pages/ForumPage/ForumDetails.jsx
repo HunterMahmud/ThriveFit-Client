@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import useAuthProvider from "../../hooks/useAuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import { FaUserShield } from 'react-icons/fa';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 
 const ForumDetails = () => {
   const { id } = useParams();
@@ -50,14 +52,23 @@ const ForumDetails = () => {
       <h1 className="text-3xl font-bold mb-4 capitalize text-center text-gray-100 ">
         {post.title}
       </h1>
-      <div className="post bg-gray-700 text-gray-100 p-4 rounded shadow-md">
+      <div className="post bg-gray-200 text-gray-100 p-4 rounded shadow-md">
         <img
           src={post.imageUrl}
           alt={post.title}
           className="my-2 w-full h-96 object-cover rounded"
         />
 
-        <p className="text-xl mt-4">Author: {post.author} <span className="text-[#2377FF] capitalize px-2 bg-[#EBF5FF] rounded-lg  items-center justify-center ">{post.role}</span></p>
+        <p className="text-xl mt-4 flex justify-start items-center">Author: {post.author} {post.role === "admin" && (
+                <span className="ml-2 text-yellow-400">
+                  <FaUserShield className="text-xl" title="Admin" />
+                </span>
+              )}
+              {post.role === "trainer" && (
+                <span className="ml-2 text-green-500">
+                  <FaChalkboardTeacher className="text-xl" title="Trainer" />
+                </span>
+              )}</p>
         <p className="mt-2">{post.content}</p>
         <div className="flex items-center mt-4 gap-4">
           <button

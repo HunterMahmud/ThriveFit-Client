@@ -16,7 +16,7 @@ const TrainerDetails = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <div className="lg:col-span-2">
-          <div className="bg-gray-800 text-white shadow-md rounded-lg p-6">
+          <div className="bg-gray-100 text-black shadow-md rounded-lg p-6">
             <div className="flex items-center mb-6">
               <img
                 src={
@@ -86,14 +86,14 @@ const TrainerDetails = () => {
           </div>
         </div>
         <div className="lg:col-span-1">
-          <div className="bg-gray-800 text-white shadow-md rounded-lg p-6">
+          <div className="bg-gray-100 text-black shadow-md rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Available Slots</h3>
             <div className="grid grid-cols-1 gap-2">
               {trainer?.slots?.map((slot, index) => (
                 <Link
                   key={index}
                   to={`/trainer/${trainer._id}?slot=${slot.slotName}`}
-                  className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
+                  className="bg-blue-500 text-balck font-semibold py-2 px-4 rounded hover:bg-blue-700"
                 >
                   {slot.slotName}
                 </Link>
@@ -102,7 +102,7 @@ const TrainerDetails = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-800 text-white shadow-md rounded-lg p-6 mt-5 max-w-7xl mx-auto">
+      <div className="bg-gray-100 text-black shadow-md rounded-lg p-6 mt-5 max-w-7xl mx-auto">
         <h3 className="text-xl font-bold mb-4">About Me:</h3>
         {trainer?.aboutMe ? (
           <p>{trainer.aboutMe}</p>

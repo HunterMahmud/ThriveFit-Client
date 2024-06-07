@@ -18,7 +18,9 @@ const Classes = () => {
   } = useQuery({
     queryKey: ["classes", currentPage, searchQuery],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/classes?page=${currentPage}&limit=${limit}&search=${searchQuery}&sort=${1}`);
+      const { data } = await axiosSecure.get(
+        `/classes?page=${currentPage}&limit=${limit}&search=${searchQuery}&sort=${1}`
+      );
       return data;
     },
     keepPreviousData: true,
@@ -41,7 +43,7 @@ const Classes = () => {
     setSearchQuery(searchTerm);
     setCurrentPage(1); // Reset to first page on new search
   };
-
+//todo:loading
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
@@ -52,7 +54,7 @@ const Classes = () => {
   if (error) return <div>Error loading classes</div>;
 
   return (
-    <div className="container text-gray-100 max-w-7xl mx-auto p-4">
+    <div className="container text-gray-900 max-w-7xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4 text-center">All Classes</h1>
       <div className="mb-4">
         <form onSubmit={handleSearchSubmit} className="flex items-center">
@@ -61,9 +63,12 @@ const Classes = () => {
             value={searchTerm}
             onChange={handleSearchChange}
             placeholder="Search classes..."
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border bg-white border-gray-300 rounded"
           />
-          <button type="submit" className="ml-2 p-2 bg-gray-300 text-gray-700 rounded">
+          <button
+            type="submit"
+            className="ml-1 p-3 px-7 bg-gray-300 text-gray-800 rounded"
+          >
             <FaSearch />
           </button>
         </form>
@@ -74,7 +79,7 @@ const Classes = () => {
             key={classItem._id}
             className="border rounded-lg p-4 shadow-md max-w-[400px]"
           >
-            <h2 className="text-2xl font-bold text-gray-100">
+            <h2 className="text-2xl font-bold text-gray-800">
               {classItem.name}
             </h2>
             <img
@@ -85,13 +90,17 @@ const Classes = () => {
               alt={classItem.name}
               className="w-full h-56 object-cover mt-2 rounded-lg"
             />
-            <p className="mt-2 text-gray-100"> <strong>Description: </strong>{classItem.description}</p>
-            <p className="mt-2 text-gray-100">
+            <p className="mt-2 text-gray-800">
+              {" "}
+              <strong>Description: </strong>
+              {classItem.description}
+            </p>
+            <p className="mt-2 text-gray-800">
               <strong>Difficulty:</strong> {classItem.difficulty}
             </p>
             <ul className="mt-2 list-disc pl-5">
               {classItem?.benefits?.map((benefit, index) => (
-                <li key={index} className="text-gray-100">
+                <li key={index} className="text-gray-800">
                   {benefit}
                 </li>
               ))}
@@ -124,7 +133,7 @@ const Classes = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50"
         >
           Previous
         </button>
@@ -134,7 +143,7 @@ const Classes = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50"
         >
           Next
         </button>

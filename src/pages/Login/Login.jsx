@@ -84,16 +84,16 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
         <ScrollRestoration />
         <div
           data-aos="zoom-in"
-          className="w-full mb-9 max-w-md mx-auto mt-12 p-8 space-y-3 rounded-xl  border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-100 shadow-lg"
+          className="w-full mb-9 max-w-md mx-auto mt-12 p-8 space-y-3 rounded-xl  border border-gray-200  bg-white  text-black shadow-lg"
         >
-          <h1 className="text-2xl font-bold text-center text-black font-bugrasimo dark:text-gray-100">
+          <h1 className="text-2xl font-bold text-center text-black font-bugrasimo ">
             Login
           </h1>
           <form onSubmit={handleSubmit(onSubmitLogin)} className="space-y-6">
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="email"
-                className="block text-gray-900 dark:text-gray-100"
+                className="block text-gray-900 "
               >
                 Email
               </label>
@@ -107,7 +107,7 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-100 bg-transparent appearance-none"
+                className="w-full  placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-100 bg-transparent appearance-none"
               />
               {errors?.email?.message && (
                 <span className="text-red-500">{errors.email.message}</span>
@@ -116,7 +116,7 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="password"
-                className="block text-gray-900 dark:text-gray-100"
+                className="block text-gray-900 "
               >
                 Password
               </label>
@@ -133,10 +133,10 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
                   name="password"
                   id="password"
                   placeholder="Password"
-                  className="w-full dark:bg-gray-900 dark:placeholder:text-gray-100 dark:text-gray-200 placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-100 bg-transparent appearance-none"
+                  className="w-full  placeholder:text-gray-700 px-4 py-3 rounded-md border-2 border-gray-500 bg-main text-gray-800 focus:border-violet-100 bg-transparent appearance-none"
                 />
                 <span
-                  className="absolute top-4 right-3 text-black dark:text-white cursor-pointer p-1"
+                  className="absolute top-4 right-3 text-black  cursor-pointer p-1"
                   onClick={() => {
                     setShowPass(!showPass);
                   }}
@@ -160,18 +160,18 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
             </div>
           </form>
           <div className="flex items-center pt-4 space-x-1">
-            <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
-            <p className="px-3 text-sm text-gray-800 dark:text-gray-200">
+            <div className="flex-1 h-px sm:w-16 bg-gray-200"></div>
+            <p className="px-3 text-sm text-gray-800 ">
               Login with social accounts
             </p>
-            <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
+            <div className="flex-1 h-px sm:w-16 bg-gray-200"></div>
           </div>
           <div className="flex justify-center space-x-4">
             <button
               onClick={handleLoginWithGoogle}
               title="Log in with Google"
               type="button"
-              className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
+              className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
               <svg
                 className="w-4 h-auto"
@@ -200,11 +200,11 @@ import useAxiosPublic from './../../hooks/useAxiosPublic';
               Login with Google
             </button>
           </div>
-          <p className="text-sm text-center sm:px-6 text-gray-800 dark:text-gray-200">
+          <p className="text-sm text-center sm:px-6 text-gray-800 ">
             Don't have an account?
             <Link
               to="/register"
-              className="underline text-gray-700 dark:text-gray-50 font-bold ml-2"
+              className="underline text-gray-700  font-bold ml-2"
             >
               Register
             </Link>

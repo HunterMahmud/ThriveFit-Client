@@ -10,7 +10,7 @@ const BeATrainer = () => {
   const { user } = useAuthProvider();
   const axiosSecure = useAxiosSecure();
 
-// console.log(className);
+
 
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -56,6 +56,9 @@ const BeATrainer = () => {
       if(data?.message==='pending'){
         toast.info('Already applied. Wait for admin approval!')
       }
+      else if(data?.message === 'rejected'){
+        toast.error("You are rejected.");
+      }
       else if(data) {
         toast.success(
           "Application submitted successfully! Wait for admin approval."
@@ -64,7 +67,7 @@ const BeATrainer = () => {
       }
     } catch (error) {
       toast.error("Error submitting the form");
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
   //if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}

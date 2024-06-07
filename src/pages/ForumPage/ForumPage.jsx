@@ -6,6 +6,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAuthProvider from "../../hooks/useAuthProvider";
 import useAxiosSecure from './../../hooks/useAxiosSecure';
+import { FaUserShield } from 'react-icons/fa';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 
 const ForumPage = () => {
   const { user } = useAuthProvider();
@@ -51,7 +53,7 @@ const ForumPage = () => {
     const maxLength = 50;
     return content.length > maxLength ? `${content.slice(0, maxLength)}...` : content;
   };
-
+///todo:loading
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -62,10 +64,10 @@ const ForumPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-100">Forum</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900 my-10">Forum</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data?.posts?.map((post) => (
-          <div key={post._id} className="post bg-white p-4 rounded shadow-md">
+          <div key={post._id} className="post bg-white text-gray-800 p-4 border rounded-md shadow-lg">
             <Link to={`/forum/${post._id}`}>
               <img
                 src={post.imageUrl}
@@ -74,7 +76,16 @@ const ForumPage = () => {
               />
               <h2 className="text-xl font-bold capitalize">{post.title}</h2>
             </Link>
-            <p className="font-semibold">Author: {post.author} <span className="text-[#2377FF] capitalize px-2 bg-[#EBF5FF] rounded-lg  items-center justify-center">{post.role}</span></p>
+            <p className="font-semibold flex items-center">Author: {post.author} {post.role === "admin" && (
+                <span className="ml-2 text-yellow-400">
+                  <FaUserShield className="text-xl" title="Admin" />
+                </span>
+              )}
+              {post.role === "trainer" && (
+                <span className="ml-2 text-green-500">
+                  <FaChalkboardTeacher className="text-xl" title="Trainer" />
+                </span>
+              )}</p>
             <p>{renderContentPreview(post.content)}</p>
             <Link to={`/forum/${post._id}`} className="text-blue-600">
               Read More
@@ -100,7 +111,7 @@ const ForumPage = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50"
         >
           Previous
         </button>
@@ -110,7 +121,7 @@ const ForumPage = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === data.totalPages}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50"
         >
           Next
         </button>
