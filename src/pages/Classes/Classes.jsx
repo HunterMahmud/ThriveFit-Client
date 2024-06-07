@@ -18,7 +18,7 @@ const Classes = () => {
   } = useQuery({
     queryKey: ["classes", currentPage, searchQuery],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/classes?page=${currentPage}&limit=${limit}&search=${searchQuery}`);
+      const { data } = await axiosSecure.get(`/classes?page=${currentPage}&limit=${limit}&search=${searchQuery}&sort=${1}`);
       return data;
     },
     keepPreviousData: true,
@@ -90,7 +90,7 @@ const Classes = () => {
               <strong>Difficulty:</strong> {classItem.difficulty}
             </p>
             <ul className="mt-2 list-disc pl-5">
-              {classItem.benefits.map((benefit, index) => (
+              {classItem?.benefits?.map((benefit, index) => (
                 <li key={index} className="text-gray-100">
                   {benefit}
                 </li>

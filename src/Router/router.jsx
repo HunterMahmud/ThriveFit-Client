@@ -25,6 +25,7 @@ import ActivityLog from './../pages/Dashboard/ActivityLog/ActivityLog';
 import ForumPage from './../pages/ForumPage/ForumPage';
 import ForumDetails from './../pages/ForumPage/ForumDetails';
 import WelcomeDashboard from "../pages/Dashboard/WelcomeDashboard";
+import RecommendedClasses from "../pages/Dashboard/RecommendedClasses/RecommendedClasses";
 
 
 const router = createBrowserRouter([
@@ -134,6 +135,10 @@ const router = createBrowserRouter([
                 path:'activitylog',
                 element: <ActivityLog/>
             },
+            {
+                path: 'recommendedclasses',
+                element: <RecommendedClasses/>
+            }
         ]
     }
 ])

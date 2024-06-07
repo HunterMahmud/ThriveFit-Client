@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useRole from "./../hooks/useRole";
-import useAuthProvider from './../hooks/useAuthProvider';
+import useAuthProvider from "./../hooks/useAuthProvider";
 
 const Dashboard = () => {
-  const {user} = useAuthProvider();
+  const { user } = useAuthProvider();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -17,9 +17,11 @@ const Dashboard = () => {
   // console.log(userRole);
 
   if (roleLoading) {
-    return <div className='flex items-center justify-center h-full'>
-      <span className="loading loading-spinner loading-lg"></span>
-    </div>;
+    return (
+      <div className="flex items-center justify-center h-full">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
   return (
     <div className="flex h-full min-h-screen max-w-[100vw]">
@@ -53,122 +55,162 @@ const Dashboard = () => {
             {/* admin only navlinks */}
             {userRole === "admin" && (
               <>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/allnewsletter")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/allnewsletter">
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/allnewsletter")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/allnewsletter"
+                  >
                     All NewsLetter
                   </NavLink>
                 </li>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/alltrainers")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/alltrainers">All Trainers</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/alltrainers")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/alltrainers"
+                  >
+                    All Trainers
+                  </NavLink>
                 </li>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/appliedtrainers")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/appliedtrainers">
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/appliedtrainers")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/appliedtrainers"
+                  >
                     Applied Trainers
                   </NavLink>
                 </li>
-                <li
-                
-                >
-                  <NavLink  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/balance")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/balance">Balance</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/balance")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/balance"
+                  >
+                    Balance
+                  </NavLink>
                 </li>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/addnewclass")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/addnewclass">Add New Class</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/addnewclass")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/addnewclass"
+                  >
+                    Add New Class
+                  </NavLink>
                 </li>
               </>
             )}
             {/* trainer only navlinks */}
             {userRole === "trainer" && (
               <>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/manageslot")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/manageslot">Manage Slots</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/manageslot")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/manageslot"
+                  >
+                    Manage Slots
+                  </NavLink>
                 </li>
-                <li
-                 
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/addnewslot")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/addnewslot">Add New Slot</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/addnewslot")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/addnewslot"
+                  >
+                    Add New Slot
+                  </NavLink>
                 </li>
               </>
             )}
             {/* admin and trainer both common route */}
-            {(userRole == "admin" ||
-              userRole == "trainer") && (
-                <li
-                 
-                >
-                  <NavLink  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+            {(userRole == "admin" || userRole == "trainer") && (
+              <li>
+                <NavLink
+                  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
                     isActive("/dashboard/addnewforum")
                       ? "bg-blue-600 text-white"
                       : ""
-                  }`} to="/dashboard/addnewforum">Add New Forum</NavLink>
-                </li>
-              )}
+                  }`}
+                  to="/dashboard/addnewforum"
+                >
+                  Add New Forum
+                </NavLink>
+              </li>
+            )}
             {/* member only navlinks */}
             {userRole === "member" && (
               <>
-                <li
-                  
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/userprofile")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/userprofile">User Profile</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/userprofile")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/userprofile"
+                  >
+                    User Profile
+                  </NavLink>
                 </li>
-                <li
-                 
-                >
-                  <NavLink  className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/activitylog")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/activitylog">Activity Log</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/activitylog")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/activitylog"
+                  >
+                    Activity Log
+                  </NavLink>
                 </li>
-                <li
-                  
-                >
-                  <NavLink className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                    isActive("/dashboard/beatrainer")
-                      ? "bg-blue-600 text-white"
-                      : ""
-                  }`} to="/dashboard/beatrainer">Be A Trainer</NavLink>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/beatrainer")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/beatrainer"
+                  >
+                    Be A Trainer
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/recommendedclasses")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/recommendedclasses"
+                  >
+                    Recommended Classes
+                  </NavLink>
                 </li>
               </>
             )}
@@ -196,11 +238,15 @@ const Dashboard = () => {
             </svg>
           </button>
           <div className="flex justify-between w-full">
-          <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
-         <div className="flex justify-center items-center gap-2">
-         <NavLink to='/' className='bg-blue-500 p-2 rounded-md text-white'>Home</NavLink>
-         <button className="bg-red-600 p-2 rounded-md text-white">Logout</button>
-         </div>
+            <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
+            <div className="flex justify-center items-center gap-2">
+              <NavLink to="/" className="bg-blue-500 p-2 rounded-md text-white">
+                Home
+              </NavLink>
+              <button className="bg-red-600 p-2 rounded-md text-white">
+                Logout
+              </button>
+            </div>
           </div>
         </header>
         <main className="flex-grow bg-white max-w-[100vw] ">
