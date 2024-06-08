@@ -27,7 +27,7 @@ const testimonials = [
     {
       image: 'https://i.ibb.co/7G5Shbg/cena.jpg',
       title: 'Nutrition Counseling',
-      quote: 'ThriveFit Gym offers fantastic nutrition counseling services. Working with their nutritionist has helped me develop a balanced diet that complements my workout routine. The information on the website about these services is very comprehensive.',
+      quote: 'ThriveFit Gym offers fantastic nutrition counseling services and their nutritionist has helped me develop a balanced diet that complements my workout routine. The information on the website about these services is very comprehensive.',
       author: 'John Cena'
     }
   ];
@@ -85,10 +85,12 @@ const Clients = () => {
   let clientDisc = "";
   clientDisc = testimonials.map((item, i) => <ClientSlider item={item} key={i} />);
   return (
-    <div className="w-4/5 max-w-screen-xl text-gray-900 mx-auto py-16" id="client">
-      <h2 className="text-gray-800 text-3xl sm:text-5xl font-extrabold text-center">Reviews</h2>
-      <p className=" text-center">What clients say</p>
-
+    <div className="w-4/5 max-w-screen-xl text-gray-900 mx-auto py-10" id="client">
+      <h2 className="text-gray-800 text-3xl sm:text-5xl font-extrabold mb-4 text-center">Reviews</h2>
+      
+      <p className="mb-10 mt-4 font-light text-center text-gray-500  sm:text-xl">
+          What Client Says
+        </p>
       <div className="mt-8 relative">
         <Slider ref={arrowRef} {...settings}>
           {clientDisc}

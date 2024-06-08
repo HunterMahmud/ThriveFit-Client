@@ -73,7 +73,7 @@ const BeATrainer = () => {
   //if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
+      <h2 className="text-3xl  font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">

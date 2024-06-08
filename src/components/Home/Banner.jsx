@@ -33,7 +33,7 @@ const Banner = () => {
            
             <Link
               to="/classes"
-              className=" mt-3 p-2 border font-bugrasimo border-blue-500 bg-violet-500 font-bold rounded-md text-lg"
+              className=" mt-3 p-2 border font-bugrasimo border-blue-600 bg-violet-600 font-bold rounded-md text-lg"
             >
                Find Now!
             </Link>
@@ -52,19 +52,22 @@ const Banner = () => {
         autoplay={true}
         className="mySwiper"
       >
+        
+
+
         <SwiperSlide>
           <div
-            className={`relative flex items-center justify-left h-[80vh] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://source.unsplash.com/topless-man-in-black-shorts-sitting-on-black-and-silver-barbell-9dzWZQWZMdE")] bg-center bg-no-repeat`}
+            className={`relative flex items-center justify-left h-[600px] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://i.ibb.co/nmJZ8Bm/gym1.jpg")] bg-center bg-no-repeat`}
           ></div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className={`relative flex items-center justify-left h-[80vh] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://source.unsplash.com/topless-man-in-black-shorts-carrying-black-dumbbell-7kEpUPB8vNk")] bg-center bg-no-repeat`}
+            className={`relative flex items-center justify-left h-[600px] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://i.ibb.co/ZGXbtDQ/gym2.jpg")] bg-center bg-no-repeat`}
           ></div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className={`relative flex items-center justify-left h-[80vh] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://source.unsplash.com/person-about-to-lift-barbell-zfPOelmDc-M")] bg-center bg-no-repeat`}
+            className={`relative flex items-center justify-left h-[600px] object-cover bg-cover bg-[linear-gradient(45deg,rgba(3,7,18,0.5),rgba(3,7,18,0)),url("https://i.ibb.co/yhZrkMT/gym3.jpg")] bg-center bg-no-repeat`}
           ></div>
         </SwiperSlide>
         

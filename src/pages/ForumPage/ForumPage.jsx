@@ -75,21 +75,21 @@ const ForumPage = () => {
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900 my-10">
         Forum
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center mx-auto">
         {data?.posts?.map((post) => (
           <div
             key={post._id}
-            className="post bg-white text-gray-800 p-4 border rounded-md shadow-lg"
+            className="post bg-white text-gray-800 p-4 border rounded-md shadow-lg max-w-sm w-full"
           >
             <Link to={`/forum/${post._id}`}>
               <img
                 src={post.imageUrl || "https://i.ibb.co/fFYknQL/image-not-found.jpg"}
                 alt={post.title}
-                className="my-2 w-full h-48 object-cover rounded"
+                className="my-2 w-full h-56  object-cover rounded-xl"
               />
               <h2 className="text-xl font-bold capitalize">{post.title}</h2>
             </Link>
-            <p className="font-semibold flex items-center">
+            <p className="font-semibold flex items-center my-3">
               Author: {post.author}{" "}
               {post.role === "admin" && (
                 <span className="ml-2 text-yellow-400">
@@ -102,7 +102,7 @@ const ForumPage = () => {
                 </span>
               )}
             </p>
-            <p>{renderContentPreview(post.content)}</p>
+            <p>Descriptions: {renderContentPreview(post.content)}</p>
             <Link to={`/forum/${post._id}`} className="text-blue-600">
               Read More
             </Link>

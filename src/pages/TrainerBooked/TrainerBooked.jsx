@@ -83,7 +83,7 @@ const TrainerBooked = () => {
           <div className="flex flex-col md:flex-row justify-between mb-4 gap-5">
             <div className="md:w-1/2">
               <img
-                className="w-full h-full"
+                className="w-full h-full object-cover"
                 src={trainer.profileImage}
                 alt={trainer.profileImage}
               />

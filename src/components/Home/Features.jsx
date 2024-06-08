@@ -13,14 +13,15 @@ const Features = () => {
       <section className=" mx-2 text-gray-900 ">
       <div className="container mx-auto my-10 space-y-2 text-center ">
         <h2 className="text-3xl sm:text-5xl font-extrabold text-center">Get A Perfect Body</h2>
-        <p className="text-gray-800  max-w-[900px] mx-auto">
+        <p className="mb-10 mt-4 font-light max-w-[900px] mx-auto text-center text-gray-500  sm:text-xl">
           Discover ThriveFit's exceptional services: personalized training
           plans, advanced equipment, vibrant group classes, and expert nutrition
           guidance. Achieve your perfect body with us!
         </p>
+       
       </div>
       <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="flex flex-col items-center text-center  border border-gray-300 rounded-md shadow-md ">
+        <div className="flex flex-col items-center text-center p-4 border border-gray-300 rounded-md shadow-md ">
           <img className="h-24 w-24" src={personal} alt="" />
 
           <h3 className="my-3 text-2xl sm:text-3xl font-semibold ">

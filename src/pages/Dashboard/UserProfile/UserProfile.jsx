@@ -6,7 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UserProfile = () => {
   const { user, userUpdateProfile, setLoading } = useAuthProvider();
-//   console.log(user);
+  // console.log(user?.photoURL);
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, setValue, reset } = useForm({
     defaultValues: {
@@ -20,7 +20,7 @@ const UserProfile = () => {
   useEffect(() => {
     // Set the default values from the user object
     setValue("fullName", user.displayName);
-    setValue("profilePicture", user?.reloadUserInfo?.photoUrl);
+    setValue("profilePicture", user?.photoURL);
     setValue("email", user.email);
     setValue("lastLogin", user?.metadata?.lastSignInTime); // Assuming last login info is here
   }, [user, setValue]);
@@ -53,7 +53,7 @@ const UserProfile = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4 bg-white shadow-md rounded-lg my-7">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         User Profile
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>

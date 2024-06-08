@@ -19,11 +19,11 @@ const Home = () => {
       </MaxWidthProvider>
       <AboutUs />
       {/* <Testimonials /> */}
-      <Clients/>
       <FeaturedClasses />
+      <Clients/>
       <LatestPosts/>
-      <TeamSection/>
       <NewsLetter />
+      <TeamSection/>
     </div>
   );
 };

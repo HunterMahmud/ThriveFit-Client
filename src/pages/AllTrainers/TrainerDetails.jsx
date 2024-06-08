@@ -108,7 +108,7 @@ const TrainerDetails = () => {
                   <Link
                     key={index}
                     to={`/trainer/${trainer._id}?slot=${slot.slotName}`}
-                    className="bg-blue-500 text-balck font-semibold py-2 px-4 rounded hover:bg-blue-700"
+                    className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
                   >
                     {slot.slotName}
                   </Link>

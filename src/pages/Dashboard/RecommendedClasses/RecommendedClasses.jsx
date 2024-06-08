@@ -37,15 +37,15 @@ const RecommendedClasses = () => {
   }
 
   return (
-    <div className="container text-gray-100 max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center">
+    <div className="container text-gray-900 max-w-7xl mx-auto p-4 my-10">
+      <h1 className="text-3xl font-bold mb-7 text-center">
         Classes You May Like
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4">
         {classes.map((classItem) => (
           <div
             key={classItem._id}
-            className="border rounded-lg p-4 shadow-md max-w-[400px]"
+            className="border rounded-lg p-4 shadow-md max-w-sm w-full"
           >
             <h2 className="text-2xl font-bold text-gray-900">
               {classItem.name}

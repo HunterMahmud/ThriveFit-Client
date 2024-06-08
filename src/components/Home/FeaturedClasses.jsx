@@ -14,7 +14,7 @@ const FeaturedClasses = () => {
   } = useQuery({
     queryKey: ["classess"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/classes?limit=${3}&sort=${-1}`);
+      const { data } = await axiosPublic.get(`/classes?limit=${6}&sort=${-1}`);
       return data;
     },
     keepPreviousData: true,
@@ -42,16 +42,19 @@ const FeaturedClasses = () => {
   return (
     <MaxWidthProvider>
       <div className="max-w-7xl container mx-auto">
-        <div className="container text-gray-900 max-w-7xl mx-auto">
-          <h1 className="text-3xl sm:text-5xl font-extrabold my-10 text-center">
+        <div className="container text-gray-900 max-w-7xl my-10 mx-auto">
+          <h1 className="text-3xl sm:text-5xl font-extrabold  text-center">
             Featured Classes
           </h1>
+          <p className="mb-10 mt-4 font-light text-center text-gray-500  sm:text-xl">
+          Most Booked Classes
+        </p>
           <div className="mx-2">
             <div className=" container grid grid-cols-1 md:grid-cols-2 mx-auto justify-items-center lg:grid-cols-3 gap-4">
               {classes.map((classItem) => (
                 <div
                   key={classItem._id}
-                  className="border flex flex-col   rounded-lg p-4 shadow-md max-w-[400px]"
+                  className="border flex flex-col   rounded-lg p-4 shadow-md max-w-sm w-full"
                 >
                   <h2 className="text-2xl font-bold text-gray-800">
                     {classItem.name}
@@ -67,7 +70,7 @@ const FeaturedClasses = () => {
                   <p className="mt-2 text-gray-800">
                     <strong>Description:</strong>{" "}
                     {classItem?.description?.length > 20
-                      ? classItem?.description?.slice(0, 100) + "..."
+                      ? classItem?.description
                       : classItem?.description}
                   </p>
                   <p className="mt-2 text-gray-800">

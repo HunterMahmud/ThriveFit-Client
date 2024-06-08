@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const TrainerCard = ({ trainer }) => {
   // console.log(trainer);
   return (
-    <div className="max-w-sm rounded overflow-hidden text-gray-900 shadow-lg bg-whtie p-4">
+    <div className="max-w-sm rounded overflow-hidden text-gray-900 shadow-lg bg-whtie p-4 w-full">
       <img
-        className="w-full h-[270px] object-cover"
+        className="w-full h-[270px] object-cover rounded-xl"
         src={trainer.profileImage}
         alt={trainer.fullName}
       />

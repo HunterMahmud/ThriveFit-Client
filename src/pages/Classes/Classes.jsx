@@ -79,11 +79,11 @@ const Classes = () => {
           </button>
         </form>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-4 mx-auto">
         {classes.map((classItem) => (
           <div
             key={classItem._id}
-            className="border rounded-lg p-4 shadow-md max-w-[400px]"
+            className="border rounded-lg p-4 shadow-md max-w-sm w-full"
           >
             <h2 className="text-2xl font-bold text-gray-800">
               {classItem.name}

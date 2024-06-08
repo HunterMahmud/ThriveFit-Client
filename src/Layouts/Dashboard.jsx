@@ -42,7 +42,7 @@ const Dashboard = () => {
           isSidebarOpen ? "block" : "hidden"
         } lg:flex lg:flex-col`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="flex items-center justify-between p-4 py-[22px] border-b border-gray-200">
           <h2 className="text-lg font-semibold">ThriveFit Dashboard</h2>
           <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
@@ -61,7 +61,7 @@ const Dashboard = () => {
             </svg>
           </button>
         </div>
-        <nav className="flex-grow p-4 bg-gray-200">
+        <nav className="flex-grow p-4 bg-gray-100">
           <ul>
             {/* admin only navlinks */}
             {userRole === "admin" && (

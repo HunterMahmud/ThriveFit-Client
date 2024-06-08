@@ -11,7 +11,7 @@ const AboutUs = () => {
           </h1>
           <div className="mx-2 py-8 flex flex-col lg:flex-row">
             <div className="  lg:w-1/2">
-              <p className=" mb-6 font-light text-gray-500 lg:mb-8 md:text-lg">
+              <p className=" mb-6 font-light text-gray-800 lg:mb-8 md:text-lg">
                 <span className="font-bold text-xl">Overview: </span>
                 ThriveFit Gym is a premier fitness center dedicated to
                 transforming lives through innovative and comprehensive fitness
@@ -21,7 +21,7 @@ const AboutUs = () => {
                 experienced trainers, and welcoming community make us the
                 preferred choice for fitness enthusiasts of all levels.
               </p>
-              <p className=" mb-6 font-light text-gray-500 lg:mb-8 md:text-lg">
+              <p className=" mb-6 font-light text-gray-800 lg:mb-8 md:text-lg">
                 <span className="font-bold text-xl">Mission: </span>
                 Our mission is to provide a supportive and motivating
                 environment where individuals can achieve their fitness goals,
@@ -33,8 +33,8 @@ const AboutUs = () => {
             </div>
             <div className="hidden lg:block lg:w-1/2">
               <img
-                className="object-cover"
-                src="https://source.unsplash.com/woman-in-black-long-sleeve-shirt-and-black-pants-sitting-on-exercise-equipment-HyvE5SiKMUs"
+                className="object-cover h-full w-full"
+                src="https://i.ibb.co/2jL8m11/gym4.jpg"
                 alt="mockup"
               />
             </div>

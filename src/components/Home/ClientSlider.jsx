@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 const ClientSlider = ({ item }) => {
   const { author, image, quote } = item;
   return (
-    <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-6 m-4 rounded-lg h-full">
+    <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-6 m-4 rounded-lg h-[450px] sm:h-[380px] lg:h-[400px]">
       <div className="flex items-center justify-between mb-4">
         <span className="text-5xl text-blue-500 opacity-70">
           <IoIosQuote />

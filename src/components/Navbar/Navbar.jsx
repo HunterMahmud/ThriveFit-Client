@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthProvider from "../../hooks/useAuthProvider";
+import './Navbar.css'
 
 const Navbar = () => {
   const { user, logOut } = useAuthProvider();
@@ -12,22 +13,22 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/">
+        <NavLink className="text-base sm:text-lg lg:text-sm hover:bg-blue-500 hover:text-white font-bold" to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/alltrainers">
+        <NavLink className="text-base sm:text-lg lg:text-sm hover:bg-blue-500 hover:text-white font-bold" to="/alltrainers">
           All Trainers
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/classes">
+        <NavLink className="text-base sm:text-lg lg:text-sm hover:bg-blue-500 hover:text-white font-bold" to="/classes">
           All Classes
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-base sm:text-lg lg:text-sm" to="/forums">
+        <NavLink className="text-base sm:text-lg lg:text-sm hover:bg-blue-500 hover:text-white font-bold" to="/forums">
           Forums
         </NavLink>
       </li>
@@ -36,7 +37,7 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              className="text-base sm:text-lg lg:text-sm"
+              className="text-base sm:text-lg lg:text-sm hover:bg-blue-500 hover:text-white font-bold"
               to="/dashboard"
             >
               Dashboard
