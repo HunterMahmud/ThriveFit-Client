@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/trainer/:trainerId',
-                element: <TrainerBooked/>
+                element: <PrivateRoute><TrainerBooked/></PrivateRoute>
             },
             {
                 path: '/classes',

@@ -39,16 +39,16 @@ const LatestPosts = () => {
   return (
     <MaxWidthProvider>
       <div className="container text-gray-900 max-w-7xl mx-auto ">
-        <h1 className="text-3xl font-bold my-10 text-center">
+        <h1 className="text-3xl sm:text-5xl font-extrabold my-10 text-center">
           Latest Community Posts
         </h1>
         <div className="mx-2">
           {" "}
-          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4">
             {posts.map((post) => (
               <div
                 key={post._id}
-                className="border rounded-lg p-4 shadow-md max-w-[400px]"
+                className="border rounded-lg p-4 shadow-md max-w-[400px] min-w-[400px]"
               >
                 <h2 className="text-2xl font-bold text-gray-800">
                   {post.title}

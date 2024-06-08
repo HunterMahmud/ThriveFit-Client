@@ -5,14 +5,14 @@ import community from "../../assets/community.png";
 import group from "../../assets/group.png";
 import equip from "../../assets/equip.png";
 import expert from "../../assets/expert.png";
-import MaxWidthProvider from "../../hooks/MaxWidthProvider";
+import MaxWidthProvider from "../../hooks/MaxWidthProvider"; 
 
 const Features = () => {
   return (
   <MaxWidthProvider>
       <section className=" mx-2 text-gray-900 ">
-      <div className="container mx-2  my-6 space-y-2 text-center ">
-        <h2 className="text-3xl sm:text-5xl font-bold">Get A Perfect Body</h2>
+      <div className="container mx-auto my-10 space-y-2 text-center ">
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-center">Get A Perfect Body</h2>
         <p className="text-gray-800  max-w-[900px] mx-auto">
           Discover ThriveFit's exceptional services: personalized training
           plans, advanced equipment, vibrant group classes, and expert nutrition

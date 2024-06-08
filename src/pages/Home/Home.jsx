@@ -1,6 +1,7 @@
 import React from "react";
 import AboutUs from "../../components/Home/AboutUs";
 import Banner from "../../components/Home/Banner";
+import Clients from "../../components/Home/Clients";
 import FeaturedClasses from "../../components/Home/FeaturedClasses";
 import Features from "../../components/Home/Features";
 import LatestPosts from "../../components/Home/LatestPosts";
@@ -18,6 +19,7 @@ const Home = () => {
       </MaxWidthProvider>
       <AboutUs />
       {/* <Testimonials /> */}
+      <Clients/>
       <FeaturedClasses />
       <LatestPosts/>
       <TeamSection/>

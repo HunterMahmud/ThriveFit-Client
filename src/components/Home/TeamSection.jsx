@@ -21,13 +21,13 @@ const [trainers, _, isLoading] = useAllTrainersData("success");
   return (
     <MaxWidthProvider>
       <div className="container text-gray-900 max-w-7xl mx-auto my-10">
-      <h1 className="text-3xl font-bold mb-4 text-center my-10">Meet Our Trainers</h1>
+      <h1 className="text-3xl sm:text-5xl font-extrabold  text-center my-10 ">Meet Our Trainers</h1>
      <div className="mx-2">
-     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 ">
         {trainers.slice(0, 3).map((trainer) => (
           <div
             key={trainer._id}
-            className="border rounded-lg p-4 shadow-md max-w-[400px]"
+            className="border rounded-lg p-4 shadow-md max-w-[400px] min-w-[400px]"
           >
             <img
               src={trainer.profileImage || "https://i.ibb.co/fFYknQL/image-not-found.jpg"}

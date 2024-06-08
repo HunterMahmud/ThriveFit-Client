@@ -89,9 +89,9 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-extrabold text-black text-2xl italic"
+            className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse font-Bebas font-black text-black text-2xl italic"
           >
-            Thrive <span className="not-italic text-blue-400">Fit</span>
+            Thrive <span className="not-italic text-blue-400"> {' '}Fit</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

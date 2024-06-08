@@ -3,7 +3,7 @@ import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 
 const AllNewsLetter = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: newsLetter = [] } = useQuery({
+  const { data: newsLetter = [], isLoading } = useQuery({
     queryKey: ["newsletter"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/newsletter");
@@ -11,6 +11,13 @@ const AllNewsLetter = () => {
     },
   });
   //   console.log(newsLetter);
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   return (
     
       <div className=" p-2 mx-auto sm:p-4 text-gray-900">

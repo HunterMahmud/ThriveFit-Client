@@ -41,13 +41,13 @@ const FeaturedClasses = () => {
 
   return (
     <MaxWidthProvider>
-      <div className="max-w-7xl mx-auto">
-        <div className=" text-gray-900 max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold my-10 text-center">
+      <div className="max-w-7xl container mx-auto">
+        <div className="container text-gray-900 max-w-7xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl font-extrabold my-10 text-center">
             Featured Classes
           </h1>
           <div className="mx-2">
-            <div className=" container grid grid-cols-1 md:grid-cols-2 mx-auto justify-between lg:grid-cols-3 gap-4">
+            <div className=" container grid grid-cols-1 md:grid-cols-2 mx-auto justify-items-center lg:grid-cols-3 gap-4">
               {classes.map((classItem) => (
                 <div
                   key={classItem._id}
