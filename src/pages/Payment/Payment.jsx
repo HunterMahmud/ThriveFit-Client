@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthProvider from "./../../hooks/useAuthProvider";
@@ -10,11 +10,13 @@ const Payment = () => {
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const navigate = useNavigate();
+  const [disable, setDisable] = useState(false);
   const today = new Date();
 
   const { trainer, selectedSlot, pkgName, price, selectedClasses } = location.state || {};
   // console.log(location.state);
   const handleConfirm = async () => {
+    setDisable(true);
     // console.log({
     //   trainerName: trainer.fullName,
     //   trainerId: trainer._id,
@@ -54,6 +56,7 @@ const Payment = () => {
       }
     } catch (error) {
       toast.error("Error processing payment");
+      setDisable(false);
       console.log(error);
     }
   };
@@ -106,8 +109,9 @@ const Payment = () => {
           </tbody>
         </table>
         <button
+        disabled={disable}
           onClick={handleConfirm}
-          className="w-full px-4 py-2 mt-4 bg-indigo-600 text-white font-medium text-sm rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="w-full px-4 py-2 mt-4 bg-indigo-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium text-sm rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           Confirm
         </button>
