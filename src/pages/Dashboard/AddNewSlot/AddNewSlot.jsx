@@ -175,7 +175,7 @@ const AddNewSlot = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-bold text-gray-700">
               Available Days
             </label>
             <Controller
@@ -212,7 +212,7 @@ const AddNewSlot = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-bold text-gray-700">
               Class
             </label>
             <Controller

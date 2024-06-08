@@ -143,7 +143,7 @@ const TrainerDetails = () => {
                 to="/dashboard/beatrainer"
                 className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700"
               >
-                Be A Trainer
+                Become A Trainer
               </Link>
             </div>
           </div>
