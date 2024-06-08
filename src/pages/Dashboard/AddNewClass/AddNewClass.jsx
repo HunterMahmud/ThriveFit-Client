@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddNewClass = () => {
   const axiosSecure = useAxiosSecure();
@@ -68,6 +69,9 @@ const AddNewClass = () => {
 
   return (
     <div className="w-full max-w-lg mx-auto p-4 bg-white rounded shadow-md mt-7">
+      <Helmet>
+        <title>ThriveFit | Add New Class</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Add New Class
       </h1>

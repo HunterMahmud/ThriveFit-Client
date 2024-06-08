@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from 'react-helmet-async';
 
 const RecommendedClasses = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,6 +24,9 @@ const RecommendedClasses = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loading Recommended Classes</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -31,6 +35,9 @@ const RecommendedClasses = () => {
   if (error) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        <Helmet>
+        <title>ThriveFit | Error Loaring Recommended Classes</title>
+      </Helmet>
         Error loading recommended classes...
       </div>
     );
@@ -38,6 +45,9 @@ const RecommendedClasses = () => {
 
   return (
     <div className="container text-gray-900 max-w-7xl mx-auto p-4 my-10">
+      <Helmet>
+        <title>ThriveFit | Recommended Classes</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-7 text-center">
         Classes You May Like
       </h1>

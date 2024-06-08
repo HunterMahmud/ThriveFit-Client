@@ -3,6 +3,7 @@ import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuthProvider from "./../../../hooks/useAuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from 'react-helmet-async';
 
 const ManageSlots = () => {
   const { user } = useAuthProvider();
@@ -56,6 +57,9 @@ const ManageSlots = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loding Manage Slot</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -63,12 +67,18 @@ const ManageSlots = () => {
   if (slotsInfo?.slots.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        <Helmet>
+        <title>ThriveFit | No Slot Found</title>
+      </Helmet>
         no slot found please add some slot...
       </div>
     );
   }
   return (
     <div className="w-full mx-auto p-4">
+      <Helmet>
+        <title>ThriveFit | Manage Slot</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Manage Slots
       </h1>

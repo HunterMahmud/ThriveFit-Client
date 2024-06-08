@@ -1,6 +1,7 @@
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import useTrainerData from "./../../hooks/useTrainerData";
+import { Helmet } from "react-helmet-async";
 
 const packages = [
   {
@@ -62,6 +63,9 @@ const TrainerBooked = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loading Trainer Booked Page</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -69,12 +73,18 @@ const TrainerBooked = () => {
   if(!trainer){
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        <Helmet>
+        <title>ThriveFit | No Trainer Found</title>
+      </Helmet>
         Error loading trainer data...
       </div>
     );
   }
   return (
     <div className="container mx-auto max-w-7xl p-4 my-10">
+      <Helmet>
+        <title>ThriveFit | Trainer Booked Page</title>
+      </Helmet>
       {trainer ? (
         <div className="border rounded-lg p-4 shadow-md text-gray-900">
           <h1 className="text-4xl font-bold mb-4 text-center">

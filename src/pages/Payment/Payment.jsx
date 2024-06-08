@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthProvider from "./../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { Helmet } from 'react-helmet-async';
 
 const Payment = () => {
   const { user } = useAuthProvider();
@@ -59,6 +60,9 @@ const Payment = () => {
 
   return (
     <div className="container mx-auto p-4 my-10 text-black">
+      <Helmet>
+        <title>ThriveFit | Payment Page</title>
+      </Helmet>
       <div className="border rounded-lg p-4 shadow-md overflow-x-auto">
         <h1 className="text-3xl font-bold mb-4 text-center">Payment Details</h1>
         <table className="table-auto w-full bg-white text-black">

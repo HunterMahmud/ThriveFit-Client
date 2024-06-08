@@ -17,7 +17,7 @@ const NotFound = () => {
   return (
     <section className="bg-white flex items-center  text-gray-100">
       <Helmet>
-        <title>Not Found | Nova Books</title>
+        <title>ThriveFit | Not Found</title>
       </Helmet>
       <ScrollRestoration />
       <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">

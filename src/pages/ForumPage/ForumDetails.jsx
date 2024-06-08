@@ -9,6 +9,7 @@ import useAuthProvider from "../../hooks/useAuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { FaUserShield } from 'react-icons/fa';
 import { FaChalkboardTeacher } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const ForumDetails = () => {
   const { id } = useParams();
@@ -45,6 +46,9 @@ const ForumDetails = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loading Post</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -53,12 +57,18 @@ const ForumDetails = () => {
   if (!post) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
-        Error loading featured classes...
+        <Helmet>
+        <title>ThriveFit | Error Loading post Details</title>
+      </Helmet>
+        Error loading post details...
       </div>
     );
   }
   return (
     <div className="max-w-7xl mx-auto my-10 p-4  text-gray-900">
+        <Helmet>
+        <title>ThriveFit | {post.title}</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 capitalize text-center text-gray-900 ">
         {post.title}
       </h1>

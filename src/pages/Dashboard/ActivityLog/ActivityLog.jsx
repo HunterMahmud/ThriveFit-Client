@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaEye } from 'react-icons/fa';
 import useAuthProvider from './../../../hooks/useAuthProvider';
 import useTrainerData from './../../../hooks/useTrainerData';
@@ -18,12 +19,18 @@ const ActivityLog = () => {
 
   if (isLoading) {
     return <div className='flex items-center justify-center h-full'>
+        <Helmet>
+        <title>ThriveFit | Loading Activity Log</title>
+      </Helmet>
       <span className="loading loading-spinner loading-lg"></span>
     </div>;
   }
 if(error ){
   return (
     <div className='flex items-center justify-center h-full'>
+        <Helmet>
+        <title>ThriveFit | Error Loading Activity Log</title>
+      </Helmet>
       <h1 className='text-2xl text-gray-800 capitalize'>Error happened when geting data.</h1>
     </div>
   )
@@ -31,12 +38,18 @@ if(error ){
 if(!trainer || trainer.length===0){
   return (
     <div className='flex items-center justify-center h-full'>
+        <Helmet>
+        <title>ThriveFit | Activity Log</title>
+      </Helmet>
       <h1 className='text-2xl text-gray-800 capitalize'>You are not applyed for trainer yet.</h1>
     </div>
   )
 }
   return (
     <div className="w-full mx-auto p-4">
+      <Helmet>
+        <title>ThriveFit | Activity Log</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">My Activity Log</h1>
       <div className="w-full overflow-x-auto">
         <table className="w-full text-gray-800 bg-white">

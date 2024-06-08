@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { LuMailPlus } from "react-icons/lu";
 import useTrainerData from "./../../hooks/useTrainerData";
+import { Helmet } from "react-helmet-async";
 
 const TrainerDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,9 @@ const TrainerDetails = () => {
   // console.log(trainer);
   if (isLoading) {
     <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+      <Helmet>
+        <title>ThriveFit | Loading Trainer Details</title>
+      </Helmet>
       <span className="loading loading-spinner loading-lg"></span>
     </div>;
   }
@@ -18,6 +22,9 @@ const TrainerDetails = () => {
   if (error) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+        <Helmet>
+        <title>ThriveFit | Error Loading Trainer Details</title>
+      </Helmet>
         Error loading trainer details...
       </div>
     );
@@ -26,6 +33,9 @@ const TrainerDetails = () => {
   return (
     <div className="container mx-auto px-4 text-gray-900 py-8">
       <h1 className="text-4xl font-bold mb-4 text-center my-6">
+      <Helmet>
+        <title>ThriveFit | Trainer Details Page</title>
+      </Helmet>
         Trainer Details Page
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">

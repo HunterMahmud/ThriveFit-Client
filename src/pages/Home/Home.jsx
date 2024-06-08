@@ -7,12 +7,15 @@ import Features from "../../components/Home/Features";
 import LatestPosts from "../../components/Home/LatestPosts";
 import NewsLetter from "../../components/Home/NewsLetter";
 import TeamSection from "../../components/Home/TeamSection";
-import Testimonials from "../../components/Home/Testimonials";
 import MaxWidthProvider from "./../../hooks/MaxWidthProvider";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   return (
     <div>
+       <Helmet>
+        <title>ThriveFit | Home</title>
+      </Helmet>
       <Banner />
       <MaxWidthProvider>
         <Features />

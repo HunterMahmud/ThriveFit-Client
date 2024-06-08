@@ -3,6 +3,7 @@ import useAuthProvider from "../../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import useRole from "./../../../hooks/useRole";
+import { Helmet } from 'react-helmet-async';
 
 const AddNewForum = () => {
   const [userRole, roleLoading] = useRole();
@@ -29,7 +30,7 @@ const AddNewForum = () => {
         reset();
       }
     } catch (error) {
-      console.error("Error adding forum post:", error);
+      // console.error("Error adding forum post:", error);
       toast.error("Failed to add forum post");
     }
   };
@@ -37,6 +38,9 @@ const AddNewForum = () => {
   if (roleLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loading Add New Forum Post</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -44,6 +48,9 @@ const AddNewForum = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4 bg-white shadow-md rounded-lg my-7">
+      <Helmet>
+        <title>ThriveFit | Add New Forum Post</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         Add New Forum Post
       </h2>

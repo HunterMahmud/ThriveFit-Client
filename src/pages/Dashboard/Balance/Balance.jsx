@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
+import { Helmet } from 'react-helmet-async';
 import {
   PieChart,
   Pie,
@@ -32,6 +33,9 @@ const Balance = () => {
   if (isFinancialLoading || isMemberLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+           <Helmet>
+        <title>ThriveFit | Loading Financial Overview</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -75,6 +79,9 @@ const Balance = () => {
 
   return (
     <div className="w-full mx-auto p-4">
+      <Helmet>
+        <title>ThriveFit | Financial Overview</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Financial Overview
       </h1>

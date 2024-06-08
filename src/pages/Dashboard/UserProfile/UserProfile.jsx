@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAuthProvider from "../../../hooks/useAuthProvider";
@@ -53,6 +54,9 @@ const UserProfile = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4 bg-white shadow-md rounded-lg my-7">
+      <Helmet>
+        <title>ThriveFit | {user?.displayName}'s Profile</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         User Profile
       </h2>

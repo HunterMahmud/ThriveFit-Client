@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaSearch } from "react-icons/fa";
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,6 +48,9 @@ const Classes = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+          <Helmet>
+        <title>ThriveFit | Loading All Classes</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -54,6 +58,9 @@ const Classes = () => {
   if (error) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+          <Helmet>
+        <title>ThriveFit | Error Loading Classes</title>
+      </Helmet>
         Error loading classes data...
       </div>
     );
@@ -61,6 +68,9 @@ const Classes = () => {
 
   return (
     <div className="container text-gray-900 max-w-7xl mx-auto p-4">
+      <Helmet>
+        <title>ThriveFit | All Classes</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center">All Classes</h1>
       <div className="mb-4">
         <form onSubmit={handleSearchSubmit} className="flex items-center">
@@ -73,7 +83,7 @@ const Classes = () => {
           />
           <button
             type="submit"
-            className="ml-1 p-3 px-7 bg-gray-300 text-gray-800 rounded"
+            className="ml-1 p-[12px] px-7 bg-blue-500 text-white rounded"
           >
             <FaSearch />
           </button>

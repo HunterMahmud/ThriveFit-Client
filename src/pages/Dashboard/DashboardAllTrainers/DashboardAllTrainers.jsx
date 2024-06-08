@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import useAllTrainersData from './../../../hooks/useAllTrainersData';
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
 import ConfirmationModal from './ConfirmationModal';
+import { Helmet } from 'react-helmet-async';
 
 const DashboardAllTrainers = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,6 +48,9 @@ const DashboardAllTrainers = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+        <Helmet>
+        <title>ThriveFit | Loading All Trainer</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -54,6 +58,9 @@ const DashboardAllTrainers = () => {
 
   return (
     <div className="w-full mx-auto p-4 ">
+      <Helmet>
+        <title>ThriveFit | All Trainer</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">All Trainers</h1>
       <div className="w-full overflow-x-auto">
         <table className="w-full text-gray-800 bg-white ">

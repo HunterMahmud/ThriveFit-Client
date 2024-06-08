@@ -5,6 +5,7 @@ import useAuthProvider from "../../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import CreatableSelect from "react-select/creatable";
+import { Helmet } from 'react-helmet-async';
 
 const BeATrainer = () => {
   const { user } = useAuthProvider();
@@ -73,6 +74,9 @@ const BeATrainer = () => {
   //if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white shadow-md rounded-lg">
+      <Helmet>
+        <title>ThriveFit | Be A Trainer</title>
+      </Helmet>
       <h2 className="text-3xl  font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">

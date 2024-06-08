@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAllTrainersData from "./../../../hooks/useAllTrainersData";
 import ManageModal from "./ManageModal";
 import { FaEye } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const AppliedTrainers = () => {
   const [trainers, refetch, isLoading] = useAllTrainersData("pending");
@@ -22,6 +23,9 @@ const AppliedTrainers = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
+             <Helmet>
+        <title>ThriveFit | Loading Applied Trainers</title>
+      </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -30,12 +34,18 @@ const AppliedTrainers = () => {
   if (!trainers || trainers.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
+             <Helmet>
+        <title>ThriveFit | No Applied Trainers Found</title>
+      </Helmet>
         No trainer found...
       </div>
     );
   }
   return (
     <div className="w-full mx-auto p-4">
+      <Helmet>
+        <title>ThriveFit | Applied Trainers</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Applied Trainers
       </h1>
