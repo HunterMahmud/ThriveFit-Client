@@ -12,7 +12,7 @@ const useTrainerData = (trainerInfo) => {
   const {
     data: trainer = [],
     isLoading,
-    error,
+    error, refetch
   } = useQuery({
     queryKey: ["trainer", trainerQuery],
     queryFn: async () => {
@@ -20,7 +20,7 @@ const useTrainerData = (trainerInfo) => {
       return data;
     },
   });
-  return [trainer, isLoading, error];
+  return [trainer, isLoading, error,refetch];
 };
 
 export default useTrainerData;

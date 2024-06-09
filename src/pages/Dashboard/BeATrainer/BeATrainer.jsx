@@ -6,8 +6,10 @@ import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import CreatableSelect from "react-select/creatable";
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const BeATrainer = () => {
+  const navigate = useNavigate()
   const { user } = useAuthProvider();
   const axiosSecure = useAxiosSecure();
 
@@ -40,6 +42,7 @@ const BeATrainer = () => {
   ];
 
   const onSubmit = async (data) => {
+ 
     // console.log(data);
     const trainerInfo = {
       ...data,
@@ -56,15 +59,18 @@ const BeATrainer = () => {
       // console.log(data);
       if(data?.message==='pending'){
         toast.info('Already applied. Wait for admin approval!')
+        navigate('/dashboard/activitylog');
       }
       else if(data?.message === 'rejected'){
-        toast.error("You are rejected.");
+        toast.error("You are rejected. Delete application from Activity log to ReApply!");
+        navigate('/dashboard/activitylog');
       }
       else if(data) {
         toast.success(
           "Application submitted successfully! Wait for admin approval."
         );
         reset(); // Reset the form
+        navigate('/dashboard/activitylog');
       }
     } catch (error) {
       toast.error("Error submitting the form");
