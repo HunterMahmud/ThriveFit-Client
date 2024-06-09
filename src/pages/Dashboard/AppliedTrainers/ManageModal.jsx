@@ -56,7 +56,7 @@ const ManageModal = ({ isOpen, onRequestClose, trainer }) => {
             <img
               src={trainer.profileImage}
               alt={trainer.fullName}
-              className="w-32 h-32 rounded-full mx-auto"
+              className="w-32 h-32 rounded-full object-cover mx-auto"
             />
             <h3 className="text-xl text-center mt-4 font-bold">{trainer.fullName}</h3>
             <p>Email: {trainer.email}</p>

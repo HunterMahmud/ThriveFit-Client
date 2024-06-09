@@ -62,29 +62,29 @@ const UserProfile = () => {
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
-          <label className="block  text-sm font-medium text-gray-700">
+          <label className="block  text-sm font-medium text-gray-800">
             Full Name
           </label>
           <input
             type="text"
             {...register("fullName", { required: true })}
-            className="w-full p-2 border bg-white border-gray-300 rounded"
+            className="w-full p-2 border bg-white border-gray-300 rounded text-gray-800"
             placeholder="Enter your full name"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-800">
             Profile Picture URL
           </label>
           <input
             type="text"
             {...register("profilePicture")}
-            className="w-full p-2 border bg-white border-gray-300 rounded"
+            className="w-full p-2 border bg-white border-gray-300 rounded text-gray-800"
             placeholder="Enter the URL of your profile picture"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-800">
             Email
           </label>
           <input
@@ -96,7 +96,7 @@ const UserProfile = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-800">
             Last Login
           </label>
           <input

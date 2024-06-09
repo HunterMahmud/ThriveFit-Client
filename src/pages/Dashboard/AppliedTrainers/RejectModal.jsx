@@ -32,7 +32,7 @@ const RejectModal = ({ isOpen, onRequestClose, trainer }) => {
         </button>
         <h2 className="text-2xl mb-4 font-bold text-center">Reject Trainer</h2>
         <div className="mb-4">
-          <img src={trainer.profileImage} alt={trainer.fullName} className="w-32 h-32 rounded-full mx-auto" />
+          <img src={trainer.profileImage} alt={trainer.fullName} className="w-32 h-32 object-cover rounded-full mx-auto" />
           <h3 className="text-xl mt-4 font-bold text-center">{trainer.fullName}</h3>
           <p>Email: {trainer.email}</p>
           <p>Age: {trainer.age}</p>

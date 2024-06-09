@@ -13,6 +13,9 @@ const TrainerRoute = ({children}) => {
     if(user && userRole === 'trainer')  {
        return children;
     } 
+    if(user){
+        return <Navigate to='/' replace={true}></Navigate>
+    }
     return <Navigate to='/login' state={location.pathname} replace={true}/>
 };
 
