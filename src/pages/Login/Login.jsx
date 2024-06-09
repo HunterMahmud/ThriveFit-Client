@@ -34,10 +34,10 @@ const Login = () => {
     emailPasswordLogIn(email, password)
       .then((res) => {
         // console.log(res.user);
-
-        toast.success("Login success.");
-
-        navigate(location?.state ? location.state : "/");
+        if (res) {
+          toast.success("Login success.");
+          navigate(location?.state ? location.state : "/");
+        }
       })
       .catch((err) => {
         // console.log(err);

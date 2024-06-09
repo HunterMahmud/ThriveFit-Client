@@ -8,7 +8,7 @@ const MemberRoute = ({ children }) => {
   const { user, loading } = useAuthProvider();
   const location = useLocation();
   const [userRole, roleLoading] = useRole();
-
+// console.log(user.displayName, roleLoading);
   if (loading || roleLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">

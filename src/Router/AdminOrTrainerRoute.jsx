@@ -18,6 +18,9 @@ const AdminOrTrainerRoute = ({ children }) => {
   if (user && (userRole === "admin" || userRole ==='trainer')) {
     return children;
   }
+  else if(user){
+    return <Navigate to="/" replace={true}/>
+  }
   return <Navigate to="/login" state={location.pathname} replace={true} />;
 };
 

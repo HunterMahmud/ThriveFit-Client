@@ -64,6 +64,14 @@ const AddNewSlot = () => {
   });
 
   const onSubmit = async (slotInfo) => {
+    if (
+      slotInfo.availableDays?.length === 0 ||
+      slotInfo.slotName?.length === 0 ||
+      parseInt(slotInfo.slotTime) == 0 ||
+      slotInfo.selectedClasses?.length === 0
+    ) {
+      return toast.error("All field Must Fillup");
+    }
     // console.log(slotInfo);
     try {
       const { data } = await axiosSecure.post(
@@ -85,9 +93,9 @@ const AddNewSlot = () => {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
         <Helmet>
-        <title>ThriveFit | Loading Add New Slot</title>
-      </Helmet>
-        
+          <title>ThriveFit | Loading Add New Slot</title>
+        </Helmet>
+
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
@@ -96,9 +104,8 @@ const AddNewSlot = () => {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
         <Helmet>
-        <title>ThriveFit | Error Loading Add New Slot</title>
-      </Helmet>
-        
+          <title>ThriveFit | Error Loading Add New Slot</title>
+        </Helmet>
         Error loading trainer data...
       </div>
     );
@@ -107,10 +114,9 @@ const AddNewSlot = () => {
   if (!trainer) {
     return (
       <div className="flex items-center justify-center h-full text-red-500 text-lg">
-        
         <Helmet>
-        <title>ThriveFit | You are not a trainer</title>
-      </Helmet>
+          <title>ThriveFit | You are not a trainer</title>
+        </Helmet>
         You are not a trainer.
       </div>
     );

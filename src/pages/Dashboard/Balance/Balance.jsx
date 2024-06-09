@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import {
   PieChart,
   Pie,
@@ -14,7 +14,11 @@ import {
 
 const Balance = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: financialData, isLoading: isFinancialLoading } = useQuery({
+  const {
+    data: financialData,
+    isLoading: isFinancialLoading,
+    error,
+  } = useQuery({
     queryKey: ["financialData"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/balance-transactions");
@@ -33,10 +37,22 @@ const Balance = () => {
   if (isFinancialLoading || isMemberLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
-           <Helmet>
-        <title>ThriveFit | Loading Financial Overview</title>
-      </Helmet>
+        <Helmet>
+          <title>ThriveFit | Loading Financial Overview</title>
+        </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Helmet>
+          <title>ThriveFit | Error Loading Balance Data</title>
+        </Helmet>
+        <h1 className="text-2xl text-gray-800 capitalize">
+          Error happened when geting data.
+        </h1>
       </div>
     );
   }
@@ -78,27 +94,20 @@ const Balance = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-4">
+    <div className="w-full mx-auto p-4 my-10">
       <Helmet>
         <title>ThriveFit | Financial Overview</title>
       </Helmet>
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+      <h1 className="text-3xl font-bold  text-center text-gray-900">
         Financial Overview
       </h1>
 
-      <div className="flex flex-col lg:flex-row justify-around items-center mb-8">
-        <div className="bg-white shadow-lg rounded-lg p-6 m-4 w-full lg:w-1/3">
-          <h2 className="text-2xl font-bold text-gray-700 mb-2">
-            Total Balance
-          </h2>
-          <p className="text-3xl text-green-600">${totalBalance}</p>
-        </div>
-
-        <div className="bg-white shadow-lg rounded-lg p-6 m-4 w-full lg:w-1/3">
-          <h2 className="text-2xl font-bold text-gray-700 mb-2">
+      <div className="flex flex-col lg:flex-row mb-8 gap-3">
+        <div className="bg-white shadow-lg border rounded-lg p-6 my-4 w-full lg:w-1/2">
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
             Recent Transactions
           </h2>
-          <ul className="text-gray-700">
+          <ul className="text-gray-800">
             {transactions.slice(0, 6).map((transaction, index) => (
               <li key={index} className="flex justify-between border-b py-2">
                 <span>
@@ -113,6 +122,12 @@ const Balance = () => {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="bg-white border shadow-lg rounded-lg p-6 my-4 w-full lg:w-1/2">
+          <h2 className="text-2xl font-bold text-gray-700 mb-2">
+            Total Balance
+          </h2>
+          <p className="text-3xl  text-green-600">${totalBalance}</p>
         </div>
       </div>
 

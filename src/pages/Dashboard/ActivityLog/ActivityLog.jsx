@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { FaEye } from 'react-icons/fa';
-import useAuthProvider from './../../../hooks/useAuthProvider';
-import useTrainerData from './../../../hooks/useTrainerData';
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { FaEye } from "react-icons/fa";
+import useAuthProvider from "./../../../hooks/useAuthProvider";
+import useTrainerData from "./../../../hooks/useTrainerData";
 
 const ActivityLog = () => {
   const { user } = useAuthProvider();
@@ -15,42 +15,50 @@ const ActivityLog = () => {
     setIsModalOpen(true);
   };
   // console.log(error);
-// console.log(trainer.length);
+  // console.log(trainer.length);
 
   if (isLoading) {
-    return <div className='flex items-center justify-center h-full'>
+    return (
+      <div className="flex items-center justify-center h-full">
         <Helmet>
-        <title>ThriveFit | Loading Activity Log</title>
-      </Helmet>
-      <span className="loading loading-spinner loading-lg"></span>
-    </div>;
+          <title>ThriveFit | Loading Activity Log</title>
+        </Helmet>
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
-if(error ){
-  return (
-    <div className='flex items-center justify-center h-full'>
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-full">
         <Helmet>
-        <title>ThriveFit | Error Loading Activity Log</title>
-      </Helmet>
-      <h1 className='text-2xl text-gray-800 capitalize'>Error happened when geting data.</h1>
-    </div>
-  )
-}
-if(!trainer || trainer.length===0){
-  return (
-    <div className='flex items-center justify-center h-full'>
+          <title>ThriveFit | Error Loading Activity Log</title>
+        </Helmet>
+        <h1 className="text-2xl text-gray-800 capitalize">
+          Error happened when geting data.
+        </h1>
+      </div>
+    );
+  }
+  if (!trainer || trainer.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full">
         <Helmet>
-        <title>ThriveFit | Activity Log</title>
-      </Helmet>
-      <h1 className='text-2xl text-gray-800 capitalize'>You are not applyed for trainer yet.</h1>
-    </div>
-  )
-}
+          <title>ThriveFit | Activity Log</title>
+        </Helmet>
+        <h1 className="text-2xl text-gray-800 capitalize">
+          You are not applyed for trainer yet.
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="w-full mx-auto p-4">
       <Helmet>
         <title>ThriveFit | Activity Log</title>
       </Helmet>
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">My Activity Log</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+        My Activity Log
+      </h1>
       <div className="w-full overflow-x-auto">
         <table className="w-full text-gray-800 bg-white">
           <thead className="bg-gray-200">
@@ -58,19 +66,29 @@ if(!trainer || trainer.length===0){
               <th className="px-4 py-2">Name</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Status</th>
-              {trainer?.status === 'rejected' && (
+              {trainer?.status === "rejected" && (
                 <th className="px-4 py-2">Actions</th>
               )}
             </tr>
           </thead>
           <tbody>
             <tr className="bg-gray-100">
-              <td className="border px-4 py-2 text-center">{trainer.fullName}</td>
-              <td className="border px-4 py-2 text-center">{trainer.email}</td>
-              <td className={`border px-4 py-2 text-center ${trainer?.status == 'rejected' && 'text-red-500' || trainer?.status == 'success' && 'text-green-500' } `}>
-                {trainer?.status?.toUpperCase()}
+              <td className="border px-4 py-2 text-center">
+                {trainer.fullName}
               </td>
-              {trainer?.status === 'rejected' && (
+              <td className="border px-4 py-2 text-center">{trainer.email}</td>
+              <td className={`border px-4 py-2 text-center `}>
+                <span
+                  className={`text-sm ${
+                    (trainer?.status == "rejected" && "text-gray-700 bg-red-200") ||
+                    (trainer?.status == "success" && "text-gray-700 bg-green-200") ||
+                    (trainer?.status == "pending" && "text-gray-700 bg-yellow-200")
+                  } p-1 py-0 rounded-lg`}
+                >
+                  {trainer?.status?.toUpperCase()}
+                </span>
+              </td>
+              {trainer?.status === "rejected" && (
                 <td className="border px-4 py-2 text-center">
                   <button
                     onClick={() => handleViewFeedback(trainer)}
@@ -87,7 +105,10 @@ if(!trainer || trainer.length===0){
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="fixed inset-0 bg-black opacity-50" onClick={() => setIsModalOpen(false)}></div>
+          <div
+            className="fixed inset-0 bg-black opacity-50"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
           <div className="bg-white p-6 rounded-lg z-10 max-w-md mx-auto">
             <h2 className="text-2xl mb-4 text-center">Rejection Feedback</h2>
             <p>{selectedTrainer?.feedbackMessage}</p>
