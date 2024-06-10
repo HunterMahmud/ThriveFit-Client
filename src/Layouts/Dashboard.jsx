@@ -1,16 +1,38 @@
 import React, { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import useRole from "./../hooks/useRole";
 import useAuthProvider from "./../hooks/useAuthProvider";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { FaListCheck } from "react-icons/fa6";
+import {
+  FaBook,
+  FaChalkboardTeacher,
+  FaEdit,
+  FaHome,
+  FaMoneyCheckAlt,
+  FaRegNewspaper,
+  FaUserClock,
+  FaUserEdit,
+} from "react-icons/fa";
+import { RxActivityLog } from "react-icons/rx";
+import { IoIosLogOut } from "react-icons/io";
+import {
+  MdAddToPhotos,
+  MdEditNote,
+  MdFormatListBulletedAdd,
+  MdManageAccounts,
+  MdManageHistory,
+  MdPostAdd,
+} from "react-icons/md";
 
 const Dashboard = () => {
-  const {  logOut } = useAuthProvider();
+  const { logOut } = useAuthProvider();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   const location = useLocation();
   const handleLogOut = () => {
     logOut()
@@ -25,7 +47,6 @@ const Dashboard = () => {
 
   const isActive = (path) => location.pathname === path;
   const [userRole, roleLoading] = useRole();
-  // console.log(userRole);
 
   if (roleLoading) {
     return (
@@ -34,16 +55,19 @@ const Dashboard = () => {
       </div>
     );
   }
+
   return (
-    <div className="flex h-full min-h-screen max-w-[100vw]">
+    <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
       <div
-        className={`fixed lg:relative z-20 w-64 bg-white shadow-lg lg:shadow-none lg:block ${
+        className={`fixed lg:relative z-20 w-64 h-screen bg-white shadow-lg lg:shadow-none lg:flex lg:flex-col ${
           isSidebarOpen ? "block" : "hidden"
-        } lg:flex lg:flex-col`}
+        }`}
       >
         <div className="flex items-center justify-between p-4 py-[22px] border-b border-gray-200">
-          <h2 className="text-lg font-semibold">ThriveFit Dashboard</h2>
+          <h2 className="text-lg text-gray-800 font-semibold">
+            ThriveFit Dashboard
+          </h2>
           <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
               className="w-6 h-6"
@@ -61,9 +85,8 @@ const Dashboard = () => {
             </svg>
           </button>
         </div>
-        <nav className="flex-grow p-4 bg-gray-100">
+        <nav className="flex flex-col justify-between flex-grow p-4 h-full bg-gray-100 overflow-y-auto">
           <ul>
-            {/* admin only navlinks */}
             {userRole === "admin" && (
               <>
                 <li>
@@ -75,7 +98,8 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/allnewsletter"
                   >
-                    All NewsLetter
+                  <span className="flex gap-2 items-center"><FaRegNewspaper className="text-xl"/>   All NewsLetter  </span>
+        
                   </NavLink>
                 </li>
                 <li>
@@ -87,7 +111,8 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/alltrainers"
                   >
-                    All Trainers
+                  <span className="flex gap-2 items-center"><FaListCheck className="text-xl"/>   All Trainers  </span>
+                  
                   </NavLink>
                 </li>
                 <li>
@@ -99,7 +124,8 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/appliedtrainers"
                   >
-                    Applied Trainers
+                  <span className="flex gap-2 items-center"><FaUserClock className="text-xl"/>   Applied Trainers  </span>
+                    
                   </NavLink>
                 </li>
                 <li>
@@ -111,7 +137,8 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/balance"
                   >
-                    Balance
+                  <span className="flex gap-2 items-center"><FaMoneyCheckAlt className="text-xl"/> Balance    </span>
+                    
                   </NavLink>
                 </li>
                 <li>
@@ -123,12 +150,12 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/addnewclass"
                   >
-                    Add New Class
+                     <span className="flex gap-2 items-center"><MdFormatListBulletedAdd className="text-xl"/>   Add New Class   </span>
+                    
                   </NavLink>
                 </li>
               </>
             )}
-            {/* trainer only navlinks */}
             {userRole === "trainer" && (
               <>
                 <li>
@@ -140,7 +167,9 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/manageslot"
                   >
-                    Manage Slots
+                    <span className="flex gap-2 items-center">
+                      <FaEdit className="text-xl" /> Manage Slots{" "}
+                    </span>
                   </NavLink>
                 </li>
                 <li>
@@ -152,12 +181,13 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/addnewslot"
                   >
-                    Add New Slot
+                    <span className="flex gap-2 items-center">
+                      <MdAddToPhotos className="text-xl" /> Add New Slot{" "}
+                    </span>
                   </NavLink>
                 </li>
               </>
             )}
-            {/* admin and trainer both common route */}
             {(userRole == "admin" || userRole == "trainer") && (
               <li>
                 <NavLink
@@ -168,11 +198,12 @@ const Dashboard = () => {
                   }`}
                   to="/dashboard/addnewforum"
                 >
-                  Add New Forum
+                  <span className="flex gap-2 items-center">
+                    <MdPostAdd className="text-xl" /> Add New Forum{" "}
+                  </span>
                 </NavLink>
               </li>
             )}
-            {/* member only navlinks */}
             {userRole === "member" && (
               <>
                 <li>
@@ -184,7 +215,9 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/userprofile"
                   >
-                    User Profile
+                    <span className="flex gap-2 items-center">
+                      <FaUserEdit className="text-xl" /> User Profile
+                    </span>
                   </NavLink>
                 </li>
                 <li>
@@ -196,7 +229,9 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/activitylog"
                   >
-                    Activity Log
+                    <span className="flex gap-2 items-center">
+                      <RxActivityLog className="text-xl" /> Activity Log
+                    </span>
                   </NavLink>
                 </li>
                 <li>
@@ -208,7 +243,9 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/beatrainer"
                   >
-                    Be A Trainer
+                    <span className="flex gap-2 items-center">
+                      <FaChalkboardTeacher className="text-xl" /> Be A Trainer{" "}
+                    </span>
                   </NavLink>
                 </li>
                 <li>
@@ -220,30 +257,43 @@ const Dashboard = () => {
                     }`}
                     to="/dashboard/bookedtrainer"
                   >
-                    Booked Trainer
+                    <span className="flex gap-2 items-center">
+                      <FaBook className="text-xl" /> Booked Trainer{" "}
+                    </span>
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink
-                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
-                      isActive("/dashboard/recommendedclasses")
-                        ? "bg-blue-600 text-white"
-                        : ""
-                    }`}
-                    to="/dashboard/recommendedclasses"
-                  >
-                    Recommended Classes
-                  </NavLink>
-                </li> */}
               </>
             )}
+          </ul>
+
+          <ul className="hidden lg:block">
+            <li>
+              <Link
+                to="/"
+                className="block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white"
+              >
+                <span className="flex gap-2 items-center">
+                  <FaHome className="text-xl" /> Home{" "}
+                </span>
+              </Link>
+            </li>
+            <li>
+              <button
+                onClick={handleLogOut}
+                className="w-full text-left block p-2 mb-2 text-gray-700 rounded hover:bg-red-500 hover:text-white"
+              >
+                <span className="flex gap-2 items-center">
+                  <IoIosLogOut className="text-xl" /> Logout{" "}
+                </span>
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col transition-all duration-300 ">
-        <header className="flex items-center justify-between bg-white p-4 border-b border-gray-200">
+      <div className="flex-1 flex flex-col overflow-auto">
+        <header className="flex items-center justify-between bg-white p-4 border-b border-gray-200 lg:hidden">
           <button className="lg:hidden text-gray-600" onClick={toggleSidebar}>
             <svg
               className="w-6 h-6"
@@ -260,19 +310,23 @@ const Dashboard = () => {
               />
             </svg>
           </button>
-          <div className="flex justify-between w-full">
-            <h1 className="text-xl font-semibold">Welcome to ThriveFit</h1>
-            <div className="flex justify-center items-center gap-2">
-              <NavLink to="/" className="bg-blue-500 p-2 rounded-md text-white">
-                Home
-              </NavLink>
-              <button onClick={handleLogOut} className="bg-red-600 p-2 rounded-md text-white">
-                Logout
-              </button>
-            </div>
+          <div className="flex items-center justify-center gap-3">
+            <Link
+              to="/"
+              className="block p-2 mb-2 rounded bg-blue-500 text-white"
+            >
+              Home
+            </Link>
+
+            <button
+              onClick={handleLogOut}
+              className=" text-left block p-2 mb-2 rounded bg-red-500 text-white"
+            >
+              Logout
+            </button>
           </div>
         </header>
-        <main className="flex-grow bg-white max-w-[100vw] ">
+        <main className="flex-grow p-4 bg-gray-100 overflow-auto">
           <Outlet />
         </main>
       </div>

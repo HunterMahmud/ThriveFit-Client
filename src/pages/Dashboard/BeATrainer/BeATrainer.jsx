@@ -85,7 +85,7 @@ const BeATrainer = () => {
       <Helmet>
         <title>ThriveFit | Be A Trainer</title>
       </Helmet>
-      <h2 className="text-3xl  font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
+      <h2 className="text-3xl text-center font-bold text-gray-900 mb-6">Apply to Be a Trainer</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">

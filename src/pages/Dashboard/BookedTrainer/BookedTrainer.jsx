@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import PaymentInfo from "./PaymentInfo";
 import useAuthProvider from "./../../../hooks/useAuthProvider";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
@@ -112,7 +111,7 @@ const BookedTrainer = () => {
       <Helmet>
         <title>ThriveFit | Booked Data</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">Booked Trainer Details</h1>
+      <h2 className="text-3xl  font-bold text-gray-900 text-center mb-6">Booked Trainer Details</h2>
       {paymentData.map((payment) => (
         <PaymentInfo key={payment._id} payment={{ ...payment, openModal }} />
       ))}
