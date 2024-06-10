@@ -30,6 +30,7 @@ import AdminOrTrainerRoute from "./AdminOrTrainerRoute";
 import TrainerRoute from './TrainerRoute';
 import AdminRoute from "./AdminRoute";
 import MemberRoute from './MemberRoute';
+import BookedTrainer from './../pages/Dashboard/BookedTrainer/BookedTrainer';
 
 
 const router = createBrowserRouter([
@@ -143,8 +144,8 @@ const router = createBrowserRouter([
                 element: <MemberRoute><ActivityLog/></MemberRoute>
             },
             {
-                path: 'recommendedclasses',
-                element: <MemberRoute><RecommendedClasses/></MemberRoute>
+                path: 'bookedtrainer',
+                element: <MemberRoute><BookedTrainer/></MemberRoute>
             }
         ]
     }

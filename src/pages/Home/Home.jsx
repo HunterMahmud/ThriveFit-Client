@@ -9,6 +9,7 @@ import NewsLetter from "../../components/Home/NewsLetter";
 import TeamSection from "../../components/Home/TeamSection";
 import MaxWidthProvider from "./../../hooks/MaxWidthProvider";
 import { Helmet } from 'react-helmet-async';
+import Reviews from "../../components/Home/Reviews";
 
 const Home = () => {
   return (
@@ -23,7 +24,8 @@ const Home = () => {
       <AboutUs />
       {/* <Testimonials /> */}
       <FeaturedClasses />
-      <Clients/>
+      {/* <Clients/> */}
+      <Reviews/>
       <LatestPosts/>
       <NewsLetter />
       <TeamSection/>

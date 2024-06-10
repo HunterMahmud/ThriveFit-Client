@@ -78,6 +78,8 @@ const BeATrainer = () => {
     }
   };
   //if(isLoading) {return <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>;}
+  
+  
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white shadow-md rounded-lg">
       <Helmet>

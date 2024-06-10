@@ -214,6 +214,18 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
+                      isActive("/dashboard/bookedtrainer")
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    to="/dashboard/bookedtrainer"
+                  >
+                    Booked Trainer
+                  </NavLink>
+                </li>
+                {/* <li>
+                  <NavLink
+                    className={`block p-2 mb-2 text-gray-700 rounded hover:bg-blue-500 hover:text-white ${
                       isActive("/dashboard/recommendedclasses")
                         ? "bg-blue-600 text-white"
                         : ""
@@ -222,7 +234,7 @@ const Dashboard = () => {
                   >
                     Recommended Classes
                   </NavLink>
-                </li>
+                </li> */}
               </>
             )}
           </ul>
