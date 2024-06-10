@@ -3,7 +3,7 @@ import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuthProvider from "./../../../hooks/useAuthProvider";
 import { toast } from "react-toastify";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const ManageSlots = () => {
   const { user } = useAuthProvider();
@@ -58,18 +58,18 @@ const ManageSlots = () => {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
         <Helmet>
-        <title>ThriveFit | Loding Manage Slot</title>
-      </Helmet>
+          <title>ThriveFit | Loding Manage Slot</title>
+        </Helmet>
         <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
   }
-  if (slotsInfo?.slots.length === 0 && slotsInfo?.payments.length===0) {
+  if (slotsInfo?.slots.length === 0 && slotsInfo?.payments.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
         <Helmet>
-        <title>ThriveFit | No Info Found</title>
-      </Helmet>
+          <title>ThriveFit | No Info Found</title>
+        </Helmet>
         no slot and payment found please add slot...
       </div>
     );
@@ -79,42 +79,50 @@ const ManageSlots = () => {
       <Helmet>
         <title>ThriveFit | Manage Slot</title>
       </Helmet>
-   
-      {slotsInfo?.slots?.length>0 ? <>   <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Manage Slots
-      </h1> <div className="w-full overflow-x-auto">
-        <table className="w-full text-gray-800 bg-white">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="px-4 py-2">Serial</th>
-              <th className="px-4 py-2">Slot Name</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            { slotsInfo?.slots?.map((slot, index) => (
-              <tr key={index} className="bg-gray-100 text-center">
-                <td className="border px-4 py-2">{index + 1}</td>
-                <td className="border px-4 py-2">{slot.slotName}</td>
-                <td className="border px-4 py-2">
-                  <button
-                    onClick={() => handleDeleteClick(slot)}
-                    className="inline-block rounded bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-500 focus:outline-none focus:ring"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div></> :
-      <div>
-        <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
-        No Slot Found
       </h1>
-      </div>
-      }
+      {slotsInfo?.slots?.length > 0 ? (
+        <>
+          <div className="w-full overflow-x-auto">
+            <table className="w-full text-gray-800 bg-white">
+              <thead className="bg-gray-200">
+                <tr>
+                  <th className="px-4 py-2">Serial</th>
+                  <th className="px-4 py-2">Slot Name</th>
+                  <th className="px-4 py-2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {slotsInfo?.slots?.map((slot, index) => (
+                  <tr key={index} className="bg-gray-100 text-center">
+                    <td className="border px-4 py-2">{index + 1}</td>
+                    <td className="border px-4 py-2">{slot.slotName}</td>
+                    <td className="border px-4 py-2">
+                      <button
+                        onClick={() => handleDeleteClick(slot)}
+                        className="inline-block rounded bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-500 focus:outline-none focus:ring"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <div className="w-full overflow-x-auto">
+          <table className="w-full text-gray-800 bg-white">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="px-4 py-2">No slot found</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      )}
 
       {selectedSlot && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
