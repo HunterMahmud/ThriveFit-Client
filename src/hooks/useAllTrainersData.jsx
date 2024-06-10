@@ -1,16 +1,16 @@
 
-import useAxiosSecure from './useAxiosSecure';
+
 import { useQuery } from '@tanstack/react-query';
 import useAuthProvider from './useAuthProvider';
-//todo: have to use axios public
+import useAxiosPublic from './useAxiosPublic';
 const useAllTrainersData = (status) => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
     // console.log(status);
     const {user} = useAuthProvider()
     const { data: trainers = [], refetch, isLoading } = useQuery({
       queryKey: ["trainers", user?.email],
       queryFn: async () => {
-        const { data } = await axiosSecure.get(`/trainers?status=${status}`);
+        const { data } = await axiosPublic.get(`/trainers?status=${status}`);
         return data;
       },
     });

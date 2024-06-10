@@ -20,7 +20,7 @@ const TrainerCard = ({ trainer }) => {
        
         <div className="mt-4">
           <h3 className="text-lg font-bold">Available Slots:</h3>
-          {/* ToDO: available slot will be here */}
+       
           <ul className="list-disc list-inside">
             {trainer?.slots?.slice(0,3).map((slot, index) => (
               <li key={index}>{slot.slotName}</li>

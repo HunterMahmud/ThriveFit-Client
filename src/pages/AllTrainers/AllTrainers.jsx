@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 const AllTrainers = () => {
   const [trainers, _, isLoading] = useAllTrainersData("success");
 
+
   if (isLoading) {
     return (
       <div className="w-full min-h-[calc(100vh-300.8px)] flex items-center justify-center">
@@ -16,7 +17,7 @@ const AllTrainers = () => {
       </div>
     );
   }
-  // console.log(trainers);
+  console.log(trainers);
   return (
     <div className="container mx-auto px-4 py-8">
       <Helmet>
