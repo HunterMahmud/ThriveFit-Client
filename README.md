@@ -24,13 +24,13 @@
 - **Dashboard**: The website features a comprehensive dashboard where users can:
     - **Admin**: Manage all trainers, delete trainers, add forum posts, view financial details, and more.
     - **Trainer**: Manage slots, delete slots, add new slots, and view bookings.
-    - **Member**: Update profile information, apply to become a trainer, and view the activity log related to their application.
+    - **Member**: Update profile information, apply to become a trainer, and view the activity log related to their application, review about his booked classes.
 
 - **Admin Role**: Admins are the website owners with special privileges, such as managing trainers, approving or rejecting trainer applications with feedback, viewing financial details, managing newsletter subscriptions, adding new classes, and posting community or forum updates.
 
 - **Trainer Role**: Trainers can manage their slots, delete slots, add new slots, view bookings, and post in the community or forum.
 
-- **Member Role**: Members can view trainer details, book classes, make payments, read forum posts, upvote or downvote posts, view class schedules, manage their accounts, apply to become a trainer, and view the status and feedback of their applications.
+- **Member Role**: Members can view trainer details, book classes, make payments, read forum posts, upvote or downvote posts, view class schedules, manage their accounts, apply to become a trainer, review their booked classes, and view the status and feedback of their applications.
 
 - **Protected Routes**: The website uses protected routes to ensure that users can only access pages appropriate to their role, preventing unauthorized access to admin or trainer pages.
 
