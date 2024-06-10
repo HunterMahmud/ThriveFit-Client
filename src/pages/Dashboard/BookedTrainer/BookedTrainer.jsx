@@ -124,8 +124,8 @@ const BookedTrainer = () => {
             <textarea
               value={feedback}
               onChange={handleFeedbackChange}
-              maxLength={230}
-              placeholder="Write your feedback here (max 230 characters)"
+              maxLength={225}
+              placeholder="Write your feedback here (max 225 characters)"
               className="w-full border rounded p-2 mb-4 bg-white"
             />
             <div className="flex items-center mb-4">

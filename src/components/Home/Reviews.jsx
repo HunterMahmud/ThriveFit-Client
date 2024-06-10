@@ -53,7 +53,7 @@ var settings = {
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 760,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
@@ -61,7 +61,7 @@ var settings = {
       },
     },
     {
-      breakpoint: 530,
+      breakpoint: 650,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
