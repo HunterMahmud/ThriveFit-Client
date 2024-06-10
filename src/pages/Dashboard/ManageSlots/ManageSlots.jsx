@@ -64,13 +64,13 @@ const ManageSlots = () => {
       </div>
     );
   }
-  if (slotsInfo?.slots.length === 0) {
+  if (slotsInfo?.slots.length === 0 && slotsInfo?.payments.length===0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-800 text-lg">
         <Helmet>
-        <title>ThriveFit | No Slot Found</title>
+        <title>ThriveFit | No Info Found</title>
       </Helmet>
-        no slot found please add some slot...
+        no slot and payment found please add slot...
       </div>
     );
   }
@@ -79,10 +79,10 @@ const ManageSlots = () => {
       <Helmet>
         <title>ThriveFit | Manage Slot</title>
       </Helmet>
-      <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+   
+      {slotsInfo?.slots?.length>0 ? <>   <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
         Manage Slots
-      </h1>
-      <div className="w-full overflow-x-auto">
+      </h1> <div className="w-full overflow-x-auto">
         <table className="w-full text-gray-800 bg-white">
           <thead className="bg-gray-200">
             <tr>
@@ -92,7 +92,7 @@ const ManageSlots = () => {
             </tr>
           </thead>
           <tbody>
-            {slotsInfo?.slots?.map((slot, index) => (
+            { slotsInfo?.slots?.map((slot, index) => (
               <tr key={index} className="bg-gray-100 text-center">
                 <td className="border px-4 py-2">{index + 1}</td>
                 <td className="border px-4 py-2">{slot.slotName}</td>
@@ -108,7 +108,13 @@ const ManageSlots = () => {
             ))}
           </tbody>
         </table>
+      </div></> :
+      <div>
+        <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">
+        No Slot Found
+      </h1>
       </div>
+      }
 
       {selectedSlot && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
