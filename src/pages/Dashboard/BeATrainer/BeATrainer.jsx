@@ -163,7 +163,7 @@ const BeATrainer = () => {
         
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-              Skills
+              Skills (type and enter to add)
           </label>
           <Controller
             name="skills"
