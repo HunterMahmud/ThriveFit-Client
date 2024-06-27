@@ -59,7 +59,7 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/programming-hero-web-course1/b9a12-client-side-HunterMahmud.git
+   git clone https://github.com/HunterMahmud/ThriveFit-Client.git
    cd thrive-fit
    ```
 
@@ -188,7 +188,7 @@ If you have any suggestions or improvements, feel free to open an issue or submi
 
 ### Notes:
 
-- Replace `"https://github.com/programming-hero-web-course1/b9a12-client-side-HunterMahmud.git"` with the actual URL of your repository.
+- Replace `"https://github.com/HunterMahmud/ThriveFit-Client.git"` with the actual URL of your repository.
 - The `.env.local` file should be included in your `.gitignore` to prevent it from being committed to the repository.
 - Ensure your Firebase configuration values are correctly set in the `.env.local` file.
 - Adjust any additional instructions or configurations specific to your project.
