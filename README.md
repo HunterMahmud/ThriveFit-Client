@@ -126,7 +126,7 @@ npm run lint
 
 This will run ESLint and check for any linting errors based on the configurations provided.
 
-## Additional Information
+<!-- ## Additional Information
 
 ### Dependencies
 
@@ -172,7 +172,7 @@ This will run ESLint and check for any linting errors based on the configuration
 - **eslint-plugin-react-refresh**: Enables fast refresh in React.
 - **postcss**: Processes CSS with JavaScript plugins.
 - **tailwindcss**: Provides utility-first CSS framework.
-- **vite**: Provides a fast build tool for modern web projects.
+- **vite**: Provides a fast build tool for modern web projects. -->
 
 ### Environment Variables
 
